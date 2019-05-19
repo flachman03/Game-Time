@@ -6,3 +6,5 @@ class SurveyRepo {
 }
 
 // Holds all surveys and answers
+
+export default SurveyRepo;
