@@ -1,5 +1,6 @@
 class SurveyRepo {
-  constructor() {
+  constructor(dataFilePath) {
+  	this.dataFilePath = dataFilePath;
     this.surveys = [];
     this.answers = [];
   }
