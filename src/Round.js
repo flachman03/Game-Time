@@ -1,11 +1,13 @@
 class Round {
-  constructor() {
-    this.fastMoneyRound = false;
-    this.playerTurn;
-    this.curentSurvey;
-    this.possibleAnswers;
+  constructor(survey) {
+    this.question = survey[0];
+    this.answers = survey[1]
   }
+
+
 }
+
+export default Round;
 
 // 1 random survey per round
 // this.playerTurn should toggle on each guess
