@@ -2,7 +2,8 @@ class Player {
   constructor(id, name) {
     this.id = id;
     this.name = name;
-    this.score;
+    this.score = 0;
+    this.scores = [];
   }
 }
 
