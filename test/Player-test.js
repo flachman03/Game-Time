@@ -5,7 +5,7 @@ import Player from '../src/Player.js'
 describe('Player', function() {
   let player;
   beforeEach(() => {
-    player = new Player(1, 'Nathan');
+    player = new Player('Nathan', 1);
   });
   it('should be a function', function() {
     expect(Player).to.be.a('function');
