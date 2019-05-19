@@ -1,6 +1,69 @@
 /* This is an example of using Sass, otherwise plain CSS works too*/
-$primary-background: pink;
+
+* {
+  box-sizing: border-box;
+}
 
 body {
-  background-color: $primary-background;
+  background-image: url("http://www.danieljenkinsacademy.com/wp-content/uploads/2018/04/award-show-background-loop_hxrzdixr__F0000.png");
+  background-size: cover;
 }
+
+h1, h2, h3 {
+  margin: 0;
+}
+
+/*-----------Header-----------*/
+header {
+  display: flex;
+  height: 30vh;
+}
+
+.header__title-section {
+  flex: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  font-size: 3em;
+  color: #fff;
+  width: max-content;
+}
+
+.header__score-section {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.score-section__score-box {
+  width: 80%;
+  background-color: black;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/*-----------Main--------------*/
+
+main {
+  display: flex;
+  height: 70vh;
+}
+
+.main__left-section {
+  flex: 1;
+}
+
+.main__center-section {
+  flex: 8;
+}
+
+.main__right-section {
+  flex: 1;
+}
+
