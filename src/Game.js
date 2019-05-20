@@ -15,13 +15,13 @@ class Game {
     return new Player(player, id)
   }
 
-  createSurveys() {
-    return new SurveyRepo()
+  createSurveys(Data) {
+    return new SurveyRepo(Data)
   }
 
-  createRound() {
+  createRound(survey) {
     this.round += 1
-    return new Round()
+    return new Round(survey)
   }
 
 
