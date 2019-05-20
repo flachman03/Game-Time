@@ -18,6 +18,14 @@ describe('SurveyRepo', function() {
   });
 
   it('should accept a file path accessing survey data', function() {
-  	expect(surveyRepo.dataFilePath).to.equal(Data)
+  	expect(surveyRepo.surveyData).to.equal(Data)
+  });
+
+  it('should store all questions and answers in randomized order', function() {
+  	expect(surveyRepo.surveys).not.equal()
+  })
+
+  it('should find a question by Id and match it with all corresponding answers', function() {
+  	expect(surveyRepo.findCurrentSurveyById()).to.equal()
   })
 });
