@@ -13,4 +13,3 @@ export default Round;
 // this.playerTurn should toggle on each guess
 // current survey must not match any past surveys used in this game
 // if player guesses correct, remove guess form this.possibleAnswers
-// 
