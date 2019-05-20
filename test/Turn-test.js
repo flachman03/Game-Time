@@ -12,4 +12,12 @@ describe('Turn', function() {
     round = new Round(survey);
     turn = new Turn(round)
   })
+
+  it('should be a function', function() {
+    expect(Turn).to.be.a('function')
+  })
+
+  it('should be an instantiation of the Turn class', function() {
+    expect(turn).to.be.an.instanceOf(Turn)
+  })
 })
