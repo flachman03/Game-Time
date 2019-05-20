@@ -1,26 +1,41 @@
 class SurveyRepo {
   constructor(dataFilePath) {
-  	this.surveyData = dataFilePath;
-    this.surveys = [];
-    this.answers = [];
-    this.currentSurvey = this.randomizeSurveys();
-  }
-
-  randomizeSurveys(dataFilePath) {
-  	this.surveys = this.surveyData.surveys.map(data => data.id);
-  	const min = Math.ceil(0);
-  	const max = Math.floor(this.surveys.length);
-  	const randomSurvey = Math.floor(Math.random() * (max - min+1)) +min;
-  	console.log(randomSurvey.id)
-  	return randomSurvey.id
-
+    this.surveys = [...dataFilePath.surveys];
+    this.answers = [...dataFilePath.answers];
+    this.currentSurvey;
+    this.questionAndAnswers;
 
   }
 
-  findCurrentSurveyById(surveyId) {
+  randomizeSurveys() {
+  	const randomize = function(surveys) {
+  		let currentIndex = surveys.length;
+  		let tempValue;
+  		let randomIndex;
 
+  		while(0 !== currentIndex) {
+  			randomIndex = Math.floor(Math.random() * currentIndex);
+  			currentIndex -= 1;
 
+  			tempValue = surveys[currentIndex];
+  			surveys[currentIndex] = surveys[randomIndex];
+  			surveys[randomIndex] = tempValue;
+  		}
+
+  		return surveys;
+  	}
+  	this.currentSurvey = randomize(this.surveys).splice(0, 1)
   }
+
+
+
+  findCurrentSurveyById() {
+  	const currentAnswers = this.answers.filter(answer => {
+  		return answer.surveyId === this.currentSurvey[0].id
+  	});
+  	return this.questionAndAnswers = [this.currentSurvey, currentAnswers];
+  }
+
 }
 
 // Holds all surveys and answers
