@@ -2,6 +2,7 @@
 import chai from 'chai';
 const expect = chai.expect;
 import Round from '../src/Round.js';
+import Turn from '../src/Turn.js';
 
 describe('Round', function() {
   let round, survey;
@@ -25,6 +26,18 @@ describe('Round', function() {
 
   it('should be able to take in a survey and store the answers as an array of objects' ,function() {
     expect(round.answers).to.deep.equal([{ answer: 'Beer', respondents: 67}, { answer: 'Bowling Ball', respondents: 5}, { answer: 'Donuts', respondents: 24}])
+  })
+
+  it('should have a method to toggle between two numbers', function() {
+    expect(round.togglePlayer()).to.equal(0)
+    round.turnNumber++
+    expect(round.togglePlayer()).to.equal(1)
+    round.turnNumber++
+    expect(round.togglePlayer()).to.equal(0)
+  })
+
+  it('should create a new turn and toggle between two players', function() {
+    round.createTurn()
   })
 });
 

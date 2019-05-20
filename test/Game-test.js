@@ -28,7 +28,7 @@ describe('Game', function() {
     expect(game.createSurveys()).to.be.a.instanceOf(SurveyRepo)
   })
 
-  it('should instantiate round', () => {
+  it.skip('should instantiate round', () => {
     expect(game.round).to.equal(0)
     expect(game.createRound()).to.be.a.instanceOf(Round)
     expect(game.round).to.equal(1)

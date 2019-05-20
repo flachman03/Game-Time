@@ -1,10 +1,23 @@
+import Turn from "./Turn";
+import Game from './Game'
+
 class Round {
-  constructor(survey) {
+  constructor(survey, game) {
     this.question = survey[0];
-    this.answers = survey[1]
+    this.answers = survey[1];
+    this.currentgame = game
+    this.currentTurn;
+    this.turnNumber = 0;
   }
 
+  togglePlayer() {
+    return (this.turnNumber + 2) % 2
+  }
 
+  createTurn() {
+    this.currentTurn = new Turn(this.game.players[this.togglePlayer()], this)
+    this.turnNumber++
+  }
 }
 
 export default Round;
