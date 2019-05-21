@@ -15,5 +15,5 @@ console.log('This is the JavaScript entry file - your code begins here.');
 
 $('#start__game__btn').on('click', () => {
   event.preventDefault()
-  $('.splash__page').addClass('hidden')
+  $('.splash__page').fadeOut()
 })
