@@ -1,7 +1,7 @@
- import { userInfo } from "os";
+import { userInfo } from "os";
 import Player from "./Player";
-import SurveyRepo from '../src/SurveyRepo.js';
-import Round from '../src/Round.js';
+import SurveyRepo from './SurveyRepo.js';
+import Round from './Round.js';
 
 class Game {
   constructor(p1, p2) {
@@ -15,13 +15,13 @@ class Game {
     return new Player(player, id)
   }
 
-  createSurveys() {
-    return new SurveyRepo()
+  createSurveys(Data) {
+    return new SurveyRepo(Data)
   }
 
-  createRound() {
-    this.round++
-    return new Round()
+  createRound(survey) {
+    this.round += 1
+    return new Round(survey)
   }
 
 

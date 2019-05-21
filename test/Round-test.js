@@ -38,7 +38,7 @@ describe('Round', function() {
     expect(round.togglePlayer()).to.equal(0)
   })
 
-  it('should create a new turn and toggle between two players', function() {
+  it.skip('should create a new turn and toggle between two players', function() {
     round.createTurn()
     expect(round.currentTurn.player.name).to.equal('Ryan')
     round.createTurn()

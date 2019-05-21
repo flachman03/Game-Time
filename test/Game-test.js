@@ -3,11 +3,14 @@ const expect = chai.expect;
 import Game from '../src/Game.js';
 import SurveyRepo from '../src/SurveyRepo.js';
 import Round from '../src/Round.js';
+import Data from '../Data/Data.js'
 
 
 describe('Game', function() {
-  let game;
+  let game, survey;
   beforeEach(() => {
+    survey = ['If You Drew Homer Simpson’s Name In A Secret Santa Exchange, What Would You Buy Him?',
+      [{ answer: 'Beer', respondents: 67}, { answer: 'Bowling Ball', respondents: 5}, { answer: 'Donuts', respondents: 24}]];
     game = new Game('Nathan', 'Ryan');
   });
 
@@ -25,12 +28,12 @@ describe('Game', function() {
   })
 
   it('should instantiate survey repo', () => {
-    expect(game.createSurveys()).to.be.a.instanceOf(SurveyRepo)
+    expect(game.createSurveys(Data)).to.be.a.instanceOf(SurveyRepo)
   })
 
-  it.skip('should instantiate round', () => {
+  it('should instantiate round', () => {
     expect(game.round).to.equal(0)
-    expect(game.createRound()).to.be.a.instanceOf(Round)
+    expect(game.createRound(survey)).to.be.a.instanceOf(Round)
     expect(game.round).to.equal(1)
   })
 

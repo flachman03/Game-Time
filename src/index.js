@@ -11,3 +11,9 @@ import './css/base.scss';
 import './images/turing-logo.png'
 
 console.log('This is the JavaScript entry file - your code begins here.');
+
+
+$('#start__game__btn').on('click', () => {
+  event.preventDefault()
+  $('.splash__page').fadeOut()
+})
