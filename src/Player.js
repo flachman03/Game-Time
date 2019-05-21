@@ -5,6 +5,14 @@ class Player {
     this.score = 0;
     this.scores = [];
   }
+
+  playerName() {
+    return this.name
+  }
+
+  playerScore() {
+    return this.score
+  }
 }
 
 export default Player;
