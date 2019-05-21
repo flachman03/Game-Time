@@ -3,13 +3,15 @@ import chai from 'chai';
 const expect = chai.expect;
 import Round from '../src/Round.js';
 import Turn from '../src/Turn.js';
+import Game from '../src/Game'
 
 describe('Round', function() {
-  let round, survey;
+  let round, survey, game;
   beforeEach(() => {
+    game = new Game('Ryan', 'Taylor')
     survey = ['If You Drew Homer Simpson’s Name In A Secret Santa Exchange, What Would You Buy Him?',
       [{ answer: 'Beer', respondents: 67}, { answer: 'Bowling Ball', respondents: 5}, { answer: 'Donuts', respondents: 24}]];
-    round = new Round(survey);
+    round = new Round(survey, game);
   });
 
   it('should be a function', function() {
@@ -38,6 +40,12 @@ describe('Round', function() {
 
   it.skip('should create a new turn and toggle between two players', function() {
     round.createTurn()
+    expect(round.currentTurn.player.name).to.equal('Ryan')
+    round.createTurn()
+    expect(round.currentTurn.player.name).to.equal('Taylor')
+    round.createTurn()
+    expect(round.currentTurn.player.name).to.equal('Ryan')
+
   })
 });
 

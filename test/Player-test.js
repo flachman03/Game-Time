@@ -24,4 +24,12 @@ describe('Player', function() {
     expect(player.score).to.equal(0)
     expect(player.scores).to.eql([])
   })
+
+  it('should have a method that returns the players name', () => {
+    expect(player.playerName()).to.equal('Nathan')
+  })
+
+  it('should be able to return the players score', () => {
+    expect(player.playerScore()).to.equal(0)
+  })
 });

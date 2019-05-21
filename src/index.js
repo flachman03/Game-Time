@@ -25,6 +25,11 @@ $('#start__game__btn').on('click', () => {
   event.preventDefault()
   $('.splash__page').fadeOut()
   let game = new Game($('#player__1').val(), $('#player__2').val())
-  console.log(game)
+  playerNames(game.player1.name, game.player2.name)
 })
+
+function playerNames(name1, name2) {
+  $('#score-box__player-1').text(name1)
+  $('#score-box__player-2').text(name2)
+}
 

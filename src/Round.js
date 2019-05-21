@@ -5,7 +5,7 @@ class Round {
   constructor(survey, game) {
     this.question = survey[0];
     this.answers = survey[1];
-    this.currentgame = game
+    this.currentGame = game
     this.currentTurn;
     this.turnNumber = 0;
   }
@@ -15,7 +15,7 @@ class Round {
   }
 
   createTurn() {
-    this.currentTurn = new Turn(this.game.players[this.togglePlayer()], this)
+    this.currentTurn = new Turn(this.currentGame.players[this.togglePlayer()], this)
     this.turnNumber++
   }
 }
