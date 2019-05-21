@@ -63,15 +63,45 @@ h1 {
 }
 
 .splash__box {
-  height: 200px;
-  width: 200px;
-  border: green 1px solid;
-  background: red;
+  height: 400px;
+  width: 400px;
+  border: #CBA366 5px solid;
+  background: #D60E0E;
   display: flex;
-  
+  margin: auto;
+  flex-wrap: wrap;
+  border-radius: 5px;
+  justify-content: center;
 }
 
+.start__game__form {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  height: 200px;
+  width: 300px;
+}
 
+.name__input__box {
+  display: flex;
+  flex-wrap: wrap;
+  height: 70px;
+  width: 200px;
+}
+
+.name__input {
+  height: 30px;
+  width: 200px;
+}
+
+#start__game__btn {
+  height: 30px;
+  width: 50%;
+}
+
+.hidden {
+  display: none;
+}
 
 /*-----------Main--------------*/
 
