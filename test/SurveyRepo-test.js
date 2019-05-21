@@ -29,8 +29,8 @@ describe('SurveyRepo', function() {
 
   it('should find a question by Id and match it with all corresponding answers', function() {
   	surveyRepo.randomizeSurveys();
-  	
-  	expect(surveyRepo.findCurrentSurveyById()).to.eql()
+
+  	expect(surveyRepo.findCurrentSurveyById()).to.be.an('array')
   });
 
 
