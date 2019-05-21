@@ -13,6 +13,13 @@ import Game from '../src/Game.js';
 
 console.log('This is the JavaScript entry file - your code begins here.');
 
+$('.start__game__form').keyup( () => {
+  if ($('#player__1').val() && $('#player__2').val()) {
+    $('#start__game__btn').prop('disabled', false);
+  } else {
+    $('#start__game__btn').prop('disabled', true);
+  }
+})
 
 $('#start__game__btn').on('click', () => {
   event.preventDefault()
