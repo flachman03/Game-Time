@@ -85,6 +85,7 @@ main {
   height: 350px;
   justify-content: space-around;
   margin: auto;
+  perspective: 1000px;
   width: 750px;
 }
 
@@ -113,16 +114,30 @@ main {
   width: 700px;
 }
 
+.flipped {
+  transform: rotateY(180deg);
+  transition: 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.front,
+.back {
+  backface-visibility: hidden;
+  position: absolute; 
+}
+
 .front {
   border-radius: 5px;
+  z-index: 2;
+  transform: rotateY(0deg)
+  
 }
 
 .back {
   display: flex;
   justify-content: space-between;
+  transform: rotateY(180deg)
   
 }
 
-.hidden {
-  display: none;
-}

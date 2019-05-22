@@ -10,10 +10,4 @@ import './css/base.scss';
 import './images/turing-logo.png'
 
 console.log('This is the JavaScript entry file - your code begins here.');
-$(".answer-card").flip({
-  axis: 'x',
-  speed: 300
-});
-$(".answer-card").click(function() {
-  $(this).flip(true)
-});
+
