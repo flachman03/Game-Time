@@ -3,7 +3,6 @@
 
 // An example of how you import jQuery into a JS file if you use jQuery in that file
 import $ from 'jquery';
-
 // An example of how you tell webpack to use a CSS (SCSS) file
 import './css/base.scss';
 
@@ -44,9 +43,15 @@ function playerNames(name1, name2) {
   $('#score-box__player-2').text(name2)
 }
 
+
+$('.answer-card').on('click', function() {
+	$(this).addClass('flipped')
+})
+
 $('#submit-form__submit-btn').on('click', function() {
   event.preventDefault()
   turn.evaluateGuess($('#submit-form__answer-input').val())
   console.log(turn.currentGuess)
 })
+
 
