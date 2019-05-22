@@ -5,8 +5,8 @@ class Round {
   constructor(survey, game) {
     this.question = survey[0];
     this.answers = this.getAnswers(survey);
-    this.scores = this.getScores(survey)
-    this.currentGame = game
+    this.scores = this.getScores(survey);
+    this.currentGame = game;
     this.currentTurn;
     this.turnNumber = 1;
   }

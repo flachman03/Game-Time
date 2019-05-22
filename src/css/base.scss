@@ -175,7 +175,6 @@ main {
 .flipped {
   display: flex;
   flex-direction: row; 
-  justify-content: space-between;
   transform: rotateX(-180deg);
   transition: 0.6s;
   transform-style: preserve-3d;
