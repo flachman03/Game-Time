@@ -32,4 +32,9 @@ describe('Player', function() {
   it('should be able to return the players score', () => {
     expect(player.playerScore()).to.equal(0)
   })
+
+  it('should be able to update the players score', function() {
+    player.updateScore(36)
+    expect(player.score).to.equal(36)
+  })
 });

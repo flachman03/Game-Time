@@ -26,12 +26,7 @@ describe('Turn', function() {
   it('should be able to take a player object as an argument', function() {
     expect(turn.player).to.equal(game.player1)
   })
-
-  it('should be able to add to the current players score', function() {
-    turn.updateScore(36)
-    expect(game.player1.score).to.equal(36)
-  })
-
+  
   it('should have a method that evaluates a players guess', function() {
     turn.evaluateGuess('bowling ball')
     expect(turn.currentGuess).to.deep.equal({ answer: 'Bowling Ball', respondents: 5})

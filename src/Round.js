@@ -4,10 +4,10 @@ import Game from './Game'
 class Round {
   constructor(survey, game) {
     this.question = survey[0];
-    this.answers = survey[1];
+    this.answers = this.getAnswers(survey);
     this.currentGame = game
     this.currentTurn;
-    this.turnNumber = 0;
+    this.turnNumber = 1;
   }
 
   togglePlayer() {
@@ -15,8 +15,17 @@ class Round {
   }
 
   createTurn() {
-    this.currentTurn = new Turn(this.currentGame.players[this.togglePlayer()], this)
     this.turnNumber++
+    return new Turn(this.currentGame.players[this.togglePlayer()], this)
+  }
+
+  removeAnswer(guess) {
+    let answerIndex = this.answers.indexOf(guess)
+    this.answers.splice(answerIndex, 1)
+  }
+
+  getAnswers(survey) {
+    return survey[1].map(item => item.answer)
   }
 }
 

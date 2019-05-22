@@ -6,9 +6,6 @@ class Turn {
     this.counter;
     this.currentGuess;
   }
-  updateScore(score) {
-    this.player.score += score
-  }
 
   updateTimer() {
     this.counter = setInterval(() => this.addSecond(), 1000)
@@ -25,14 +22,13 @@ class Turn {
 
   evaluateGuess(guess) {
     this.currentGuess = this.round.answers.find(item => {
-      return item.answer.toUpperCase() === guess.toUpperCase()
+      return item.toUpperCase() === guess.toUpperCase()
     })
   }
 
   updateAnswers() {
     if (this.currentGuess !== undefined) {
-      let answerIndex = this.round.answers.indexOf(this.currentGuess)
-      this.round.answers.splice(answerIndex, 1)
+      this.round.removeAnswer(this.currentGuess)
     }
   }
 }
