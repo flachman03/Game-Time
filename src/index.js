@@ -10,8 +10,12 @@ import './css/base.scss';
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
 import Game from '../src/Game.js';
+import SurveyRepo from './SurveyRepo';
+import Data from '../Data/Data'
 
 console.log('This is the JavaScript entry file - your code begins here.');
+let game, round, survey;
+
 
 $('.start__game__form').keyup( () => {
   if ($('#player__1').val() && $('#player__2').val()) {
@@ -24,8 +28,10 @@ $('.start__game__form').keyup( () => {
 $('#start__game__btn').on('click', () => {
   event.preventDefault()
   $('.splash__page').fadeOut()
-  let game = new Game($('#player__1').val(), $('#player__2').val())
+  game = new Game($('#player__1').val(), $('#player__2').val())
+  survey = new SurveyRepo(Data)
   playerNames(game.player1.name, game.player2.name)
+  console.log(survey)
 })
 
 function playerNames(name1, name2) {

@@ -18,6 +18,11 @@ class Round {
     this.currentTurn = new Turn(this.currentGame.players[this.togglePlayer()], this)
     this.turnNumber++
   }
+
+  removeAnswer(guess) {
+    let answerIndex = this.answers.indexOf(guess)
+    this.answers.splice(answerIndex, 1)
+  }
 }
 
 export default Round;
