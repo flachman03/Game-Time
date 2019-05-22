@@ -1,13 +1,5 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
-// An example of how you import jQuery into a JS file if you use jQuery in that file
 import $ from 'jquery';
-
-// An example of how you tell webpack to use a CSS (SCSS) file
 import './css/base.scss';
-
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
 import Game from '../src/Game.js';
 import SurveyRepo from './SurveyRepo';
@@ -34,7 +26,6 @@ $('#start__game__btn').on('click', () => {
   survey.randomizeSurveys()
   survey.findCurrentSurveyById()
   round = new Round(survey.questionAndAnswers, game)
-  turn = round.createTurn()
   console.log(round.answers)
   playerNames(game.player1.name, game.player2.name)
 })
@@ -46,7 +37,9 @@ function playerNames(name1, name2) {
 
 $('#submit-form__submit-btn').on('click', function() {
   event.preventDefault()
-  turn.evaluateGuess($('#submit-form__answer-input').val())
-  console.log(turn.currentGuess)
+  turn = round.createTurn()
+  let guess = turn.evaluateGuess($('#submit-form__answer-input').val())
+  round.removeAnswer(guess, turn.player)
+  console.log(turn.player)
 })
 
