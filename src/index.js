@@ -7,7 +7,7 @@ import Data from '../Data/Data'
 import Round from './Round'
 
 console.log('This is the JavaScript entry file - your code begins here.');
-let game, round, surveyRepo, turn;
+let game, round, survey, turn;
 
 $('.start__game__form').keyup( () => {
   if ($('#player__1').val() && $('#player__2').val()) {
@@ -21,7 +21,11 @@ $('#start__game__btn').on('click', () => {
   event.preventDefault()
   $('.splash__page').fadeOut()
   game = new Game($('#player__1').val(), $('#player__2').val())
-  console.log(game)
+  survey = new SurveyRepo(Data)
+  survey.randomizeSurveys()
+  survey.findCurrentSurveyById()
+  round = new Round(survey.questionAndAnswers, game)
+  console.log(round.answers)
   playerNames(game.player1.name, game.player2.name)
   fetchData()
 })
@@ -32,14 +36,14 @@ function fetchData() {
 }
 
 function makeNewSurvey() {
-  surveyRepo = game.createSurveys(Data)
-  surveyRepo.randomizeSurveys()
-  surveyRepo.findCurrentSurveyById()
+  survey = game.createSurveys(Data)
+  survey.randomizeSurveys()
+  survey.findCurrentSurveyById()
   makeNewRound()
 }
 
 function makeNewRound() {
-  round = game.createRound(surveyRepo.questionAndAnswers)
+  round = game.createRound(survey.questionAndAnswers)
   $('#question').text(round.question[0].question)
   console.log(round.answers)
   $('#score__one').text(round.scores[0])
@@ -48,11 +52,7 @@ function makeNewRound() {
   $('#answer__two').text(round.answers[1])
   $('#score__three').text(round.scores[2])
   $('#answer__three').text(round.answers[2])
-  makeNewTurn()
-}
 
-function makeNewTurn() {
-  turn = round.createTurn()
 }
 
 function playerNames(name1, name2) {
@@ -66,8 +66,10 @@ $('.answer-card').on('click', function() {
 
 $('#submit-form__submit-btn').on('click', function() {
   event.preventDefault()
-  turn.evaluateGuess($('#submit-form__answer-input').val())
-  console.log(turn.currentGuess)
+  turn = round.createTurn()
+  let guess = turn.evaluateGuess($('#submit-form__answer-input').val())
+  round.removeAnswer(guess, turn.player)
+  console.log(turn.player)
 })
 
 

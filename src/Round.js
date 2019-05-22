@@ -5,9 +5,8 @@ class Round {
   constructor(survey, game) {
     this.question = survey[0];
     this.answers = this.getAnswers(survey);
-    this.scores = this.getScores(survey);
-    this.currentGame = game;
-    this.currentTurn;
+    this.scores = this.getScores(survey)
+    this.currentGame = game
     this.turnNumber = 1;
   }
 
@@ -20,14 +19,19 @@ class Round {
     return new Turn(this.currentGame.players[this.togglePlayer()], this)
   }
 
-  removeAnswer(guess) {
-    let answerIndex = this.answers.indexOf(guess)
-    this.answers.splice(answerIndex, 1)
+  removeAnswer(guess, player) {
+    if (guess !== undefined) {
+      let answerIndex = this.answers.indexOf(guess)
+      player.updateScore(Number(this.scores.splice(answerIndex, 1)))
+      this.answers.splice(answerIndex, 1)
+
+    }
   }
 
   getAnswers(survey) {
     return survey[1].map(item => item.answer)
   }
+
   getScores(survey) {
     return survey[1].map(item => item.respondents)
   }

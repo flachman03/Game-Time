@@ -21,7 +21,7 @@ class Turn {
   }
 
   evaluateGuess(guess) {
-    this.currentGuess = this.round.answers.find(item => {
+    return this.round.answers.find(item => {
       return item.toUpperCase() === guess.toUpperCase()
     })
   }
