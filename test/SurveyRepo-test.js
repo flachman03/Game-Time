@@ -22,17 +22,5 @@ describe('SurveyRepo', function() {
   	expect(surveyRepo.surveys).to.be.an('array')
   });
 
-  it('should store all questions and answers in randomized order', function() {
-  	surveyRepo.randomizeSurveys();
-
-  	expect(surveyRepo.surveys).not.eql(Data.surveys)
-  });
-
-  it.skip('should find a question by Id and match it with all corresponding answers', function() {
-  	surveyRepo.randomizeSurveys();
-  	
-  	expect(surveyRepo.findCurrentSurveyById()).to.eql()
-  });
-
 
 });

@@ -21,7 +21,7 @@ class Game {
 
   createRound(survey) {
     this.round += 1
-    return new Round(survey)
+    return new Round(survey, this)
   }
 
 

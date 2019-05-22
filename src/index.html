@@ -40,25 +40,36 @@
     <main>
       <section class="main__left-section"></section>
       <section class="main__center-section">
-        <p class = "question__box"></p>
-        <article class = "answers__box">
-          <p class = "first__point points"></p>
-          <p class = "first__answer answers"></p>
-          <p class = "second__point points"></p>
-          <p class = "second__answer answers"></p>
-          <p class = "third__point points"></p>
-          <p class = "third__answer answers"></p>
+        <figure id="question"></figure>
+        <article id="surveys">
+          <figure class="answer-card">
+            <div class="front">1</div>
+            <div class="back">
+              <div id = 'answer__one' class="answer"></div>
+              <div id = 'score__one' class="score"></div>
+            </div>
+          </figure>
+          <figure class="answer-card">
+            <div class="front">2</div>
+            <div class="back">
+              <div id = 'answer__two' class="answer"></div>
+              <div id = 'score__two' class="score"></div>
+            </div>
+          </figure>
+          <figure class="answer-card">
+            <div class="front">3</div>
+            <div class="back">
+              <div id = 'answer__three' class="answer"></div>
+              <div id = 'score__three' class="score"></div>
+            </div>
+          </figure>
         </article>
-        <form action="submit-guess" class = "submit__guess__form">
-          <input type="text" class = "guess__input">
-          <button class = "submit__guess__btn">Submit Answer</button>
+        <form action="" id="center-section__submit-form">
+          <input type="text" name="Your Answer Here" id="submit-form__answer-input">
+          <button type="submit" id="submit-form__submit-btn">Submit</button>
         </form>
       </section>
       <section class="main__right-section"></section>
     </main>
-
-    <!-- <img src="/images/turing-logo.png" alt="turing logo" height="100px" width="100px"> -->
-
-    <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
     </body>
 </html>
