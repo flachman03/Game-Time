@@ -1,5 +1,6 @@
 /* This is an example of using Sass, otherwise plain CSS works too*/
 
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -22,32 +23,32 @@ header {
 }
 
 .header__title-section {
-  flex: 2;
-  display: flex;
   align-items: center;
+  display: flex;
+  flex: 2;
   justify-content: center;
 }
 
 h1 {
-  font-size: 3em;
   color: #fff;
+  font-size: 3em;
   width: max-content;
 }
 
 .header__score-section {
-  flex: 1;
-  display: flex;
   align-items: flex-end;
+  display: flex;
+  flex: 1;
   justify-content: center;
 }
 
 .score-section__score-box {
-  width: 80%;
+  align-items: center;
   background-color: black;
   color: #fff;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  width: 80%;
 }
 /*-----------Splash--------------*/
 
@@ -109,6 +110,7 @@ h1 {
 main {
   display: flex;
   height: 70vh;
+ 
 }
 
 .main__left-section {
@@ -116,6 +118,9 @@ main {
 }
 
 .main__center-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   flex: 8;
   display: flex;
   flex-direction: column;
@@ -123,6 +128,74 @@ main {
 
 .main__right-section {
   flex: 1;
+}
+
+/*------------ScoreBoard----------*/
+
+#surveys {
+  align-items: center;
+  background-color: #A7A7A7;
+  border: 5px solid black;
+  display: flex;
+  flex-direction: column;
+  height: 350px;
+  justify-content: space-around;
+  margin: auto;
+  perspective: 1000px;
+  width: 750px;
+}
+
+#question {
+  color: #ffffff;
+  font-family: 'Family Feud', serif;
+  font-size: 40px;
+  text-align: center;
+}
+
+.answer-card {
+  align-items: center;
+  background: #ECC685;
+  border: solid 2px #7C542D;
+  color: white;
+  display: flex;
+  font-size: 40px;
+  height: 100px;
+  justify-content: center;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  margin: 10px;
+  text-align: center;
+  text-shadow: #000 0px 0px 1px, #000 0px 0px 1px, #000 0px 0px 1px, #000 0px 0px 1px, #000 0px 0px 1px, #000 0px 0px 1px;
+  text-transform: uppercase;
+  width: 700px;
+}
+
+.flipped {
+  display: flex;
+  flex-direction: row; 
+  justify-content: space-between;
+  transform: rotateX(-180deg);
+  transition: 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.front,
+.back {
+  backface-visibility: hidden;
+  
+}
+
+.front {
+  position: fixed;
+  border-radius: 5px;
+  z-index: 2;
+  transform: rotateX(0deg)
+  
+}
+
+.back {
+  transform: rotateX(180deg)
 }
 
 #submit-form__answer-input {

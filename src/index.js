@@ -1,6 +1,5 @@
 import $ from 'jquery';
 import './css/base.scss';
-import './images/turing-logo.png'
 import Game from '../src/Game.js';
 import SurveyRepo from './SurveyRepo';
 import Data from '../Data/Data'
@@ -35,6 +34,11 @@ function playerNames(name1, name2) {
   $('#score-box__player-2').text(name2)
 }
 
+
+$('.answer-card').on('click', function() {
+	$(this).addClass('flipped')
+})
+
 $('#submit-form__submit-btn').on('click', function() {
   event.preventDefault()
   turn = round.createTurn()
@@ -42,4 +46,5 @@ $('#submit-form__submit-btn').on('click', function() {
   round.removeAnswer(guess, turn.player)
   console.log(turn.player)
 })
+
 
