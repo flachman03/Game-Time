@@ -3,6 +3,8 @@
 
 * {
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 body {
@@ -47,6 +49,60 @@ h1 {
   display: flex;
   flex-direction: column;
   width: 80%;
+}
+/*-----------Splash--------------*/
+
+.splash__page {
+  align-items: center;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+  z-index: 2;
+}
+
+.splash__box {
+  height: 400px;
+  width: 400px;
+  border: #CBA366 5px solid;
+  background: #D60E0E;
+  display: flex;
+  margin: auto;
+  flex-wrap: wrap;
+  border-radius: 5px;
+  justify-content: center;
+}
+
+.start__game__form {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  height: 200px;
+  width: 300px;
+}
+
+.name__input__box {
+  display: flex;
+  flex-wrap: wrap;
+  height: 70px;
+  width: 200px;
+}
+
+.name__input {
+  height: 30px;
+  width: 200px;
+}
+
+#start__game__btn {
+  height: 30px;
+  width: 200px;
+  margin-top: 20px;
+}
+
+.hidden {
+  display: none;
 }
 
 /*-----------Main--------------*/
@@ -115,6 +171,9 @@ main {
 }
 
 .flipped {
+  display: flex;
+  flex-direction: row; 
+  justify-content: space-between;
   transform: rotateY(180deg);
   transition: 0.6s;
   transform-style: preserve-3d;
@@ -124,10 +183,11 @@ main {
 .front,
 .back {
   backface-visibility: hidden;
-  position: absolute; 
+  
 }
 
 .front {
+  position: fixed;
   border-radius: 5px;
   z-index: 2;
   transform: rotateY(0deg)
@@ -135,9 +195,7 @@ main {
 }
 
 .back {
-  display: flex;
-  justify-content: space-between;
+ 
   transform: rotateY(180deg)
-  
 }
 

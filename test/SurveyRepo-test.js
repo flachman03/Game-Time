@@ -1,4 +1,5 @@
 import chai from 'chai';
+
 const expect = chai.expect;
 import SurveyRepo from '../src/SurveyRepo.js'
 import Data from '../Data/Data.js'
@@ -27,7 +28,7 @@ describe('SurveyRepo', function() {
   	expect(surveyRepo.surveys).not.eql(Data.surveys)
   });
 
-  it('should find a question by Id and match it with all corresponding answers', function() {
+  it.skip('should find a question by Id and match it with all corresponding answers', function() {
   	surveyRepo.randomizeSurveys();
 
   	expect(surveyRepo.findCurrentSurveyById()).to.be.an('array')
