@@ -114,14 +114,13 @@ main {
 }
 
 .main__left-section {
-  flex: 0;
+  flex: 1;
 }
 
 .main__center-section {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-
   flex: 8;
 }
 
@@ -174,7 +173,7 @@ main {
   display: flex;
   flex-direction: row; 
   justify-content: space-between;
-  transform: rotateY(180deg);
+  transform: rotateX(-180deg);
   transition: 0.6s;
   transform-style: preserve-3d;
   position: relative;
@@ -190,12 +189,11 @@ main {
   position: fixed;
   border-radius: 5px;
   z-index: 2;
-  transform: rotateY(0deg)
+  transform: rotateX(0deg)
   
 }
 
 .back {
- 
-  transform: rotateY(180deg)
+  transform: rotateX(180deg)
 }
 
