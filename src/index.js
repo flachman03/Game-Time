@@ -51,4 +51,8 @@ function makeNewSurvey() {
 function makeNewRound() {
   round = game.createRound(surveyRepo.questionAndAnswers)
   $('.question__box').text(round.question[0].question)
+  console.log(round.answers[0])
+  $('.first__answer').text(round.answers[0].answer)
+  $('.second__answer').text(round.answers[1].answer)
+  $('.third__answer').text(round.answers[2].answer)
 }
