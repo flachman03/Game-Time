@@ -15,7 +15,7 @@ import Data from '../Data/Data'
 import Round from './Round'
 
 console.log('This is the JavaScript entry file - your code begins here.');
-let game, round, survey;
+let game, round, survey, turn;
 
 
 $('.start__game__form').keyup( () => {
@@ -34,7 +34,8 @@ $('#start__game__btn').on('click', () => {
   survey.randomizeSurveys()
   survey.findCurrentSurveyById()
   round = new Round(survey.questionAndAnswers, game)
-  round.createTurn()
+  turn = round.createTurn()
+  console.log(round.answers)
   playerNames(game.player1.name, game.player2.name)
 })
 
@@ -45,7 +46,7 @@ function playerNames(name1, name2) {
 
 $('#submit-form__submit-btn').on('click', function() {
   event.preventDefault()
-  let answer = round.currentTurn.evaluateGuess($('#submit-form__answer-input').val())
-  console.log(answer)
+  turn.evaluateGuess($('#submit-form__answer-input').val())
+  console.log(turn.currentGuess)
 })
 

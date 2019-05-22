@@ -7,7 +7,7 @@ class Round {
     this.answers = this.getAnswers(survey);
     this.currentGame = game
     this.currentTurn;
-    this.turnNumber = 0;
+    this.turnNumber = 1;
   }
 
   togglePlayer() {
@@ -15,8 +15,8 @@ class Round {
   }
 
   createTurn() {
-    this.currentTurn = new Turn(this.currentGame.players[this.togglePlayer()], this)
     this.turnNumber++
+    return new Turn(this.currentGame.players[this.togglePlayer()], this)
   }
 
   removeAnswer(guess) {
