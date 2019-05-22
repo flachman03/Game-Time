@@ -9,8 +9,13 @@ import './css/base.scss';
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
 import Game from '../src/Game.js';
+import SurveyRepo from './SurveyRepo';
+import Data from '../Data/Data'
+import Round from './Round'
 
 console.log('This is the JavaScript entry file - your code begins here.');
+let game, round, survey, turn;
+
 
 $('.start__game__form').keyup( () => {
   if ($('#player__1').val() && $('#player__2').val()) {
@@ -23,7 +28,13 @@ $('.start__game__form').keyup( () => {
 $('#start__game__btn').on('click', () => {
   event.preventDefault()
   $('.splash__page').fadeOut()
-  let game = new Game($('#player__1').val(), $('#player__2').val())
+  game = new Game($('#player__1').val(), $('#player__2').val())
+  survey = new SurveyRepo(Data)
+  survey.randomizeSurveys()
+  survey.findCurrentSurveyById()
+  round = new Round(survey.questionAndAnswers, game)
+  turn = round.createTurn()
+  console.log(round.answers)
   playerNames(game.player1.name, game.player2.name)
 })
 
@@ -32,6 +43,15 @@ function playerNames(name1, name2) {
   $('#score-box__player-2').text(name2)
 }
 
+
 $('.answer-card').on('click', function() {
 	$(this).addClass('flipped')
 })
+
+$('#submit-form__submit-btn').on('click', function() {
+  event.preventDefault()
+  turn.evaluateGuess($('#submit-form__answer-input').val())
+  console.log(turn.currentGuess)
+})
+
+

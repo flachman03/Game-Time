@@ -13,6 +13,10 @@ class Player {
   playerScore() {
     return this.score
   }
+
+  updateScore(score) {
+    this.score += score
+  }
 }
 
 export default Player;

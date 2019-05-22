@@ -122,12 +122,13 @@ main {
   flex-direction: column;
   justify-content: flex-start;
   flex: 8;
+  display: flex;
+  flex-direction: column;
 }
 
 .main__right-section {
   flex: 1;
 }
-
 
 /*------------ScoreBoard----------*/
 
@@ -195,5 +196,17 @@ main {
 
 .back {
   transform: rotateX(180deg)
+#submit-form__answer-input {
+  width: 100%;
+}
+
+#submit-form__answer-input {
+  width: 60%;
+  display: inline-block;
+}
+
+#submit-form__submit-btn {
+  width: 10%;
+  display: inline-block;
 }
 

@@ -38,14 +38,18 @@ describe('Round', function() {
     expect(round.togglePlayer()).to.equal(0)
   })
 
-  it.skip('should create a new turn and toggle between two players', function() {
+  it('should create a new turn and toggle between two players', function() {
     round.createTurn()
     expect(round.currentTurn.player.name).to.equal('Ryan')
     round.createTurn()
     expect(round.currentTurn.player.name).to.equal('Taylor')
     round.createTurn()
     expect(round.currentTurn.player.name).to.equal('Ryan')
+  })
 
+  it('should remove a correct guess from the answer array', function() {
+    round.removeAnswer('beer')
+    expect(round.answers.length).to.equal(2)
   })
 });
 
