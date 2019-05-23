@@ -25,8 +25,11 @@ $('#start__game__btn').on('click', () => {
   survey.randomizeSurveys()
   survey.findCurrentSurveyById()
   round = new Round(survey.questionAndAnswers, game)
-  console.log(round.answers)
   playerNames(game.player1.name, game.player2.name)
+  turn = round.createBlankturn()
+  turn.updateTimer()
+  runTimer()
+  console.log(round.answers)
 })
 
 function playerNames(name1, name2) {
@@ -36,15 +39,38 @@ function playerNames(name1, name2) {
 
 
 $('.answer-card').on('click', function() {
-	$(this).addClass('flipped')
+  $(this).addClass('flipped')
 })
 
 $('#submit-form__submit-btn').on('click', function() {
+  startTurn()
+})
+
+$('#score-section__timer').on('DOMSubtreeModified', function() {
+  if ($('#timer').text() === '0') {
+    turn.resetTimer()
+    startTurn()
+  }
+})
+
+function displayTimer() {
+  $('#timer').text(turn.second)
+}
+
+function runTimer() {
+  let counter;
+  counter = setInterval(() => displayTimer(), 1000)
+}
+
+function startTurn () {
   event.preventDefault()
   turn = round.createTurn()
+  turn.resetTimer()
   let guess = turn.evaluateGuess($('#submit-form__answer-input').val())
   round.removeAnswer(guess, turn.player)
-  console.log(turn.player)
-})
+  console.log(round.answers)
+  console.log(round.currentTurn)
+  console.log(turn)
+}
 
 

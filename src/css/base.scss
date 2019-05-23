@@ -36,10 +36,11 @@ h1 {
 }
 
 .header__score-section {
-  align-items: flex-end;
+  align-items: center;
   display: flex;
   flex: 1;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 .score-section__score-box {
@@ -49,6 +50,21 @@ h1 {
   display: flex;
   flex-direction: column;
   width: 80%;
+}
+
+#score-section__timer {
+  width: 50px;
+  height: 50px;
+  background-color: #A7A7A7;
+  margin-bottom: 50px;
+  display:flex;
+  justify-content: center;
+}
+
+#timer {
+  display: flex;
+  align-items: center;
+  font-size: 32px;
 }
 /*-----------Splash--------------*/
 
@@ -140,7 +156,7 @@ main {
   flex-direction: column;
   height: 350px;
   justify-content: space-around;
-  margin: auto;
+  margin: 55px 0px 20px 0px;
   perspective: 1000px;
   width: 750px;
 }
@@ -199,16 +215,14 @@ main {
 }
 
 #submit-form__answer-input {
-  width: 100%;
-}
-
-#submit-form__answer-input {
-  width: 60%;
+  width: 70%;
   display: inline-block;
+  padding: 10px;
 }
 
 #submit-form__submit-btn {
-  width: 10%;
+  width: 20%;
   display: inline-block;
+  padding: 10px;
 }
 
