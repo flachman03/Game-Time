@@ -209,7 +209,6 @@ main {
 .front,
 .back {
   backface-visibility: hidden;
-  
 }
 
 .front {
@@ -217,7 +216,6 @@ main {
   border-radius: 5px;
   z-index: 2;
   transform: rotateX(0deg)
-  
 }
 
 .back {
