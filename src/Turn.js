@@ -2,7 +2,7 @@ class Turn {
   constructor(player, round) {
     this.player = player;
     this.round = round;
-    this.second = 0;
+    this.second = 30;
     this.counter;
     this.currentGuess;
   }
@@ -12,16 +12,17 @@ class Turn {
   }
 
   addSecond() {
-    this.second++
+    this.second--
   }
 
-  stopTimer() {
-    clearInterval(this.second)
-    this.second = 0
+  resetTimer() {
+    this.second = 30
+    clearInterval(this.counter)
+    this.updateTimer()
   }
 
   evaluateGuess(guess) {
-    this.currentGuess = this.round.answers.find(item => {
+    return this.round.answers.find(item => {
       return item.toUpperCase() === guess.toUpperCase()
     })
   }

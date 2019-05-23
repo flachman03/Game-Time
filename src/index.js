@@ -1,13 +1,6 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
 
-// An example of how you import jQuery into a JS file if you use jQuery in that file
 import $ from 'jquery';
-// An example of how you tell webpack to use a CSS (SCSS) file
 import './css/base.scss';
-
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png'
 import Game from '../src/Game.js';
 import SurveyRepo from './SurveyRepo';
 import Data from '../Data/Data'
@@ -15,7 +8,6 @@ import Round from './Round'
 
 console.log('This is the JavaScript entry file - your code begins here.');
 let game, round, survey, turn;
-
 
 $('.start__game__form').keyup( () => {
   if ($('#player__1').val() && $('#player__2').val()) {
@@ -33,10 +25,47 @@ $('#start__game__btn').on('click', () => {
   survey.randomizeSurveys()
   survey.findCurrentSurveyById()
   round = new Round(survey.questionAndAnswers, game)
-  turn = round.createTurn()
-  console.log(round.answers)
   playerNames(game.player1.name, game.player2.name)
+  $('.p1__box').addClass('current-player')
+  fetchData()
+  turn = round.createBlankturn()
+  turn.updateTimer()
+  runTimer()
+  console.log(round.answers)
 })
+
+function fetchData() {
+  fetch('https://fe-apps.herokuapp.com/api/v1/gametime/1903/family-feud/data')
+    .then((response) => {
+      if (response.status !== 200) {
+        console.log('FETCH ERROR. Status Code: ' + response.status);
+        return;
+      }
+      response.json().then((info) => makeNewSurvey(info.data));
+    }
+    )
+    .catch((err) => console.log('Fetch Error :-S', err));
+}
+
+function makeNewSurvey(stuff) {
+  survey = game.createSurveys(stuff)
+  survey.randomizeSurveys()
+  survey.findCurrentSurveyById()
+  makeNewRound()
+}
+
+function makeNewRound() {
+  round = game.createRound(survey.questionAndAnswers)
+  $('#question').text(round.question[0].question)
+  console.log(round.answers)
+  $('#score__one').text(round.scores[0])
+  $('#answer__one').text(round.answers[0])
+  $('#score__two').text(round.scores[1])
+  $('#answer__two').text(round.answers[1])
+  $('#score__three').text(round.scores[2])
+  $('#answer__three').text(round.answers[2])
+
+}
 
 function playerNames(name1, name2) {
   $('#score-box__player-1').text(name1)
@@ -44,9 +73,48 @@ function playerNames(name1, name2) {
 }
 
 
-$('#submit-form__submit-btn').on('click', function() {
-  event.preventDefault()
-  turn.evaluateGuess($('#submit-form__answer-input').val())
-  console.log(turn.currentGuess)
+$('.answer-card').on('click', function() {
+  $(this).addClass('flipped')
 })
 
+
+$('#submit-form__submit-btn').on('click', function() {
+  startTurn()
+})
+
+$('#score-section__timer').on('DOMSubtreeModified', function() {
+  if ($('#timer').text() === '0') {
+    turn.resetTimer()
+    startTurn()
+  }
+})
+
+
+function displayTimer() {
+  $('#timer').text(turn.second)
+}
+
+function runTimer() {
+  let counter;
+  counter = setInterval(() => displayTimer(), 1000)
+}
+
+function startTurn () {
+  event.preventDefault()
+  turn = round.createTurn()
+  turn.resetTimer()
+  let guess = turn.evaluateGuess($('#submit-form__answer-input').val())
+  round.removeAnswer(guess, turn.player)
+  console.log(turn.player)
+  hilightPlayer()
+}
+
+function hilightPlayer() {
+  if (turn.player.id === 1) {
+    $('.p1__box').removeClass('current-player')
+    $('.p2__box').addClass('current-player')
+  } else {
+    $('.p2__box').removeClass('current-player')
+    $('.p1__box').addClass('current-player')
+  }
+}
