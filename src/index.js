@@ -27,6 +27,7 @@ $('#start__game__btn').on('click', () => {
   round = new Round(survey.questionAndAnswers, game)
   console.log(round.answers)
   playerNames(game.player1.name, game.player2.name)
+  $('.p1__box').addClass('current-player')
   fetchData()
 })
 
@@ -78,6 +79,15 @@ $('#submit-form__submit-btn').on('click', function() {
   let guess = turn.evaluateGuess($('#submit-form__answer-input').val())
   round.removeAnswer(guess, turn.player)
   console.log(turn.player)
+  hilightPlayer()
 })
 
-
+function hilightPlayer() {
+  if (turn.player.id === 1) {
+    $('.p1__box').removeClass('current-player')
+    $('.p2__box').addClass('current-player')
+  } else {
+    $('.p2__box').removeClass('current-player')
+    $('.p1__box').addClass('current-player')
+  }
+}

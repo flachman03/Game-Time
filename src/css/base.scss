@@ -8,6 +8,9 @@
 }
 
 body {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
   background-image: url("http://www.danieljenkinsacademy.com/wp-content/uploads/2018/04/award-show-background-loop_hxrzdixr__F0000.png");
   background-size: cover;
 }
@@ -43,14 +46,14 @@ h1 {
   justify-content: center;
 }
 
-.score-section__score-box {
-  align-items: center;
-  background-color: black;
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  width: 80%;
-}
+// .score-section__score-box {
+//   align-items: center;
+//   background-color: black;
+//   color: #fff;
+//   display: flex;
+//   flex-direction: column;
+//   width: 80%;
+// }
 
 /*-----------Splash--------------*/
 
@@ -213,3 +216,57 @@ main {
   display: inline-block;
 }
 
+/********* highlight current player ***********/
+
+.score-section__score-box {
+  align-items: center;
+  background: linear-gradient(0deg, #000, #272727);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+
+// .score-section__score-box {
+// 	position: relative;
+// 	margin: 300px auto 0;
+// 	width: 500px;
+// 	height: 250px;
+// 	background: linear-gradient(0deg, #000, #272727);
+// }
+
+// .current-player:before, .current-player:after {
+// 	content: '';
+// 	position: absolute;
+// 	left: -2px;
+// 	top: -2px;
+// 	background: linear-gradient(50deg, #fb0094, #0000ff, #00ff00,#ffff00, #ff0000, #fb0094, 
+// 		#0000ff, #00ff00,#ffff00, #ff0000);
+// 	background-size: 400%;
+// 	width: calc(10% + 4px);
+// 	height: calc(50% + 4px);
+// 	z-index: -1;
+// 	animation: steam 20s linear infinite;
+// }
+
+// @keyframes steam {
+// 	0% {
+// 		background-position: 0 0;
+// 	}
+// 	50% {
+// 		background-position: 400% 0;
+// 	}
+// 	100% {
+// 		background-position: 0 0;
+// 	}
+// }
+
+// .current-player:after {
+// 	filter: blur(1px);
+// }
+
+.current-player {
+  border: cyan solid 5px;
+}
+
+/********* highlight current player ***********/
