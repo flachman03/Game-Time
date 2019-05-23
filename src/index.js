@@ -28,6 +28,10 @@ $('#start__game__btn').on('click', () => {
   playerNames(game.player1.name, game.player2.name)
   $('.p1__box').addClass('current-player')
   fetchData()
+  turn = round.createBlankturn()
+  turn.updateTimer()
+  runTimer()
+  console.log(round.answers)
 })
 
 function fetchData() {
@@ -73,13 +77,34 @@ $('.answer-card').on('click', function() {
 })
 
 $('#submit-form__submit-btn').on('click', function() {
+  startTurn()
+})
+
+$('#score-section__timer').on('DOMSubtreeModified', function() {
+  if ($('#timer').text() === '0') {
+    turn.resetTimer()
+    startTurn()
+  }
+})
+
+function displayTimer() {
+  $('#timer').text(turn.second)
+}
+
+function runTimer() {
+  let counter;
+  counter = setInterval(() => displayTimer(), 1000)
+}
+
+function startTurn () {
   event.preventDefault()
   turn = round.createTurn()
+  turn.resetTimer()
   let guess = turn.evaluateGuess($('#submit-form__answer-input').val())
   round.removeAnswer(guess, turn.player)
   console.log(turn.player)
   hilightPlayer()
-})
+}
 
 function hilightPlayer() {
   if (turn.player.id === 1) {
