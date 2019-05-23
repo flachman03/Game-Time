@@ -43,15 +43,10 @@ function playerNames(name1, name2) {
   $('#score-box__player-2').text(name2)
 }
 
-<<<<<<< HEAD
-$('.answer-card').on('click', function() {
-	$(this).addClass('flipped')
-})
-=======
+
 $('#submit-form__submit-btn').on('click', function() {
   event.preventDefault()
   turn.evaluateGuess($('#submit-form__answer-input').val())
   console.log(turn.currentGuess)
 })
 
->>>>>>> 1941dd07f7aa4a7b1e2f1b08c42fccb354294806
