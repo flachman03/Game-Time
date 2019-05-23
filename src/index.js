@@ -44,14 +44,9 @@ function playerNames(name1, name2) {
 }
 
 
-$('.answer-card').on('click', function() {
-	$(this).addClass('flipped')
-})
-
 $('#submit-form__submit-btn').on('click', function() {
   event.preventDefault()
   turn.evaluateGuess($('#submit-form__answer-input').val())
   console.log(turn.currentGuess)
 })
-
 
