@@ -142,13 +142,19 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  align-items: center; 
   flex: 8;
-  display: flex;
-  flex-direction: column;
+  
 }
 
 .main__right-section {
   flex: 1;
+}
+
+#center-section__submit-form {
+  width: 80%;
+  display: flex;
+  justify-content: center;
 }
 
 /*------------ScoreBoard----------*/
@@ -203,7 +209,6 @@ main {
 .front,
 .back {
   backface-visibility: hidden;
-  
 }
 
 .front {
@@ -211,7 +216,6 @@ main {
   border-radius: 5px;
   z-index: 2;
   transform: rotateX(0deg)
-  
 }
 
 .back {
@@ -219,13 +223,13 @@ main {
 }
 
 #submit-form__answer-input {
-  width: 70%;
+  width: 60%;
   display: inline-block;
   padding: 10px;
 }
 
 #submit-form__submit-btn {
-  width: 20%;
+  width: 10%;
   display: inline-block;
   padding: 10px;
 }

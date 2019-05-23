@@ -72,6 +72,7 @@ function playerNames(name1, name2) {
 $('#submit-form__submit-btn').on('click', function() {
   checkCardFlip()
   startTurn()
+  $('#submit-form__answer-input').val('');
 })
 
 function checkCardFlip() {
@@ -111,9 +112,8 @@ function startTurn () {
   turn.resetTimer()
   let guess = turn.evaluateGuess($('#submit-form__answer-input').val())
   round.removeAnswer(guess, turn.player)
-  console.log(turn.player)
-  console.log(guess)
   hilightPlayer()
+  updatePlayerScore()
 }
 
 function hilightPlayer() {
@@ -124,4 +124,9 @@ function hilightPlayer() {
     $('.p2__box').removeClass('current-player')
     $('.p1__box').addClass('current-player')
   }
+}
+
+function updatePlayerScore() {
+  $('#score-box__player-1-score').text(game.player1.score)
+  $('#score-box__player-2-score').text(game.player2.score)
 }
