@@ -25,7 +25,6 @@ $('#start__game__btn').on('click', () => {
   survey.randomizeSurveys()
   survey.findCurrentSurveyById()
   round = new Round(survey.questionAndAnswers, game)
-  console.log(round.answers)
   playerNames(game.player1.name, game.player2.name)
   $('.p1__box').addClass('current-player')
   fetchData()
