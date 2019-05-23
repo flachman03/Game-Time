@@ -31,12 +31,20 @@ $('#start__game__btn').on('click', () => {
 })
 
 function fetchData() {
-  // will get data from API
-  makeNewSurvey()
+  fetch('https://fe-apps.herokuapp.com/api/v1/gametime/1903/family-feud/data')
+    .then((response) => {
+      if (response.status !== 200) {
+        console.log('FETCH ERROR. Status Code: ' + response.status);
+        return;
+      }
+      response.json().then((info) => makeNewSurvey(info.data));
+    }
+    )
+    .catch((err) => console.log('Fetch Error :-S', err));
 }
 
-function makeNewSurvey() {
-  survey = game.createSurveys(Data)
+function makeNewSurvey(stuff) {
+  survey = game.createSurveys(stuff)
   survey.randomizeSurveys()
   survey.findCurrentSurveyById()
   makeNewRound()
@@ -61,7 +69,7 @@ function playerNames(name1, name2) {
 }
 
 $('.answer-card').on('click', function() {
-	$(this).addClass('flipped')
+  $(this).addClass('flipped')
 })
 
 $('#submit-form__submit-btn').on('click', function() {
