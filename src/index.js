@@ -3,7 +3,6 @@ import $ from 'jquery';
 import './css/base.scss';
 import Game from '../src/Game.js';
 import SurveyRepo from './SurveyRepo';
-import Data from '../Data/Data'
 import Round from './Round'
 
 console.log('This is the JavaScript entry file - your code begins here.');
@@ -21,17 +20,7 @@ $('#start__game__btn').on('click', () => {
   event.preventDefault()
   $('.splash__page').fadeOut()
   game = new Game($('#player__1').val(), $('#player__2').val())
-  survey = new SurveyRepo(Data)
-  survey.randomizeSurveys()
-  survey.findCurrentSurveyById()
-  round = new Round(survey.questionAndAnswers, game)
-  playerNames(game.player1.name, game.player2.name)
-  $('.p1__box').addClass('current-player')
   fetchData()
-  turn = round.createBlankturn()
-  turn.updateTimer()
-  runTimer()
-  console.log(round.answers)
 })
 
 function fetchData() {
@@ -55,7 +44,7 @@ function makeNewSurvey(stuff) {
 }
 
 function makeNewRound() {
-  round = game.createRound(survey.questionAndAnswers)
+  round = game.createRound(survey.questionAndAnswers, game)
   $('#question').text(round.question[0].question)
   console.log(round.answers)
   $('#score__one').text(round.scores[0])
@@ -64,7 +53,15 @@ function makeNewRound() {
   $('#answer__two').text(round.answers[1])
   $('#score__three').text(round.scores[2])
   $('#answer__three').text(round.answers[2])
+  makeNewTurn()
+}
 
+function makeNewTurn() {
+  playerNames(game.player1.name, game.player2.name)
+  $('.p1__box').addClass('current-player')
+  turn = round.createBlankturn()
+  turn.updateTimer()
+  runTimer()
 }
 
 function playerNames(name1, name2) {
@@ -72,13 +69,25 @@ function playerNames(name1, name2) {
   $('#score-box__player-2').text(name2)
 }
 
-$('.answer-card').on('click', function() {
-  $(this).addClass('flipped')
-})
-
 $('#submit-form__submit-btn').on('click', function() {
+  checkCardFlip()
   startTurn()
 })
+
+function checkCardFlip() {
+  round.answers.find
+  if ($('#submit-form__answer-input').val().toLowerCase() === 
+  $('#answer__one').text().toLowerCase()) {
+    $('#answer__one').parent().parent().addClass('flipped')
+  } else if ($('#submit-form__answer-input').val().toLowerCase() === 
+  $('#answer__two').text().toLowerCase()) {
+    $('#answer__two').parent().parent().addClass('flipped')
+  } else if ($('#submit-form__answer-input').val().toLowerCase() === 
+  $('#answer__three').text().toLowerCase()) {
+    $('#answer__three').parent().parent().addClass('flipped')
+  }
+
+}
 
 $('#score-section__timer').on('DOMSubtreeModified', function() {
   if ($('#timer').text() === '0') {
@@ -103,6 +112,7 @@ function startTurn () {
   let guess = turn.evaluateGuess($('#submit-form__answer-input').val())
   round.removeAnswer(guess, turn.player)
   console.log(turn.player)
+  console.log(guess)
   hilightPlayer()
 }
 
