@@ -20,6 +20,7 @@ $('#start__game__btn').on('click', () => {
   event.preventDefault()
   $('.splash__page').fadeOut()
   game = new Game($('#player__1').val(), $('#player__2').val())
+  hideTimer(1)
   fetchData()
 })
 
@@ -99,6 +100,7 @@ $('#score-section__timer').on('DOMSubtreeModified', function() {
 
 function displayTimer() {
   $('#timer').text(turn.second)
+  $('#timer-2').text(turn.second)
 }
 
 function runTimer() {
@@ -120,9 +122,21 @@ function hilightPlayer() {
   if (turn.player.id === 1) {
     $('.p1__box').removeClass('current-player')
     $('.p2__box').addClass('current-player')
+    hideTimer(2)
   } else {
     $('.p2__box').removeClass('current-player')
     $('.p1__box').addClass('current-player')
+    hideTimer(1)
+  }
+}
+
+function hideTimer(index) {
+  if (index === 1) {
+    $('.timer-1').parent().removeClass('hidden')
+    $('.timer-2').parent().addClass('hidden')
+  } else {
+    $('.timer-2').parent().removeClass('hidden')
+    $('.timer-1').parent().addClass('hidden')
   }
 }
 
