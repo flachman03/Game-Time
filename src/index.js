@@ -31,7 +31,6 @@ $('#start__game__btn').on('click', () => {
   turn = round.createBlankturn()
   turn.updateTimer()
   runTimer()
-  console.log(round.answers)
 })
 
 function fetchData() {
@@ -78,6 +77,11 @@ $('.answer-card').on('click', function() {
 })
 
 
+$('.answer-card').on('click', function() {
+  $(this).addClass('flipped')
+})
+
+
 $('#submit-form__submit-btn').on('click', function() {
   startTurn()
 })
@@ -105,8 +109,8 @@ function startTurn () {
   turn.resetTimer()
   let guess = turn.evaluateGuess($('#submit-form__answer-input').val())
   round.removeAnswer(guess, turn.player)
-  console.log(turn.player)
   hilightPlayer()
+  updatePlayerScore()
 }
 
 function hilightPlayer() {
@@ -117,4 +121,9 @@ function hilightPlayer() {
     $('.p2__box').removeClass('current-player')
     $('.p1__box').addClass('current-player')
   }
+}
+
+function updatePlayerScore() {
+  $('#score-box__player-1-score').text(game.player1.score)
+  $('#score-box__player-2-score').text(game.player2.score)
 }
