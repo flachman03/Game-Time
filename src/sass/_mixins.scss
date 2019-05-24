@@ -1,0 +1,10 @@
+@include flex($flex, $jc, $ac, $fd) {
+  display: $flex;
+  justify-content: $jc;
+  align-content: $ac;
+  flex-direction: $fd;
+}
+
+
+
+@include flex(center, center, column)
