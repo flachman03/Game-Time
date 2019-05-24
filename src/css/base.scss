@@ -8,6 +8,9 @@
 }
 
 body {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
   background-image: url("http://www.danieljenkinsacademy.com/wp-content/uploads/2018/04/award-show-background-loop_hxrzdixr__F0000.png");
   background-size: cover;
 }
@@ -17,6 +20,7 @@ h1, h2, h3 {
 }
 
 /*-----------Header-----------*/
+
 header {
   display: flex;
   height: 30vh;
@@ -32,23 +36,41 @@ header {
 h1 {
   color: #fff;
   font-size: 3em;
+   text-shadow: #000 0px 0px 1px, #000 0px 0px 1px, #000 0px 0px 1px, #000 0px 0px 1px, #000 0px 0px 1px, #000 0px 0px 1px;
   width: max-content;
 }
 
 .header__score-section {
-  align-items: flex-end;
+  align-items: center;
   display: flex;
   flex: 1;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 .score-section__score-box {
+  position: relative;
   align-items: center;
-  background-color: black;
+  background: linear-gradient(0deg, #000, #272727);
   color: #fff;
   display: flex;
   flex-direction: column;
   width: 80%;
+}
+
+#score-section__timer {
+  width: 50px;
+  height: 50px;
+  background-color: #A7A7A7;
+  margin-bottom: 50px;
+  display:flex;
+  justify-content: center;
+}
+
+#timer {
+  display: flex;
+  align-items: center;
+  font-size: 32px;
 }
 /*-----------Splash--------------*/
 
@@ -121,27 +143,34 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  align-items: center; 
   flex: 8;
-  display: flex;
-  flex-direction: column;
+  
 }
 
 .main__right-section {
   flex: 1;
 }
 
+#center-section__submit-form {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+}
 
 /*------------ScoreBoard----------*/
 
 #surveys {
   align-items: center;
-  background-color: #A7A7A7;
+  background-color: #000;
+  background-image: url("https://cdn.pixabay.com/photo/2017/08/05/15/53/gold-2584457_960_720.jpg");
   border: 5px solid black;
   display: flex;
   flex-direction: column;
   height: 350px;
   justify-content: space-around;
   margin: auto;
+  margin-top: 10px;
   perspective: 1000px;
   width: 750px;
 }
@@ -156,7 +185,7 @@ main {
 .answer-card {
   align-items: center;
   background: #ECC685;
-  border: solid 2px #7C542D;
+  border: solid 2px #550102;
   color: white;
   display: flex;
   font-size: 40px;
@@ -174,7 +203,6 @@ main {
 .flipped {
   display: flex;
   flex-direction: row; 
-  justify-content: space-between;
   transform: rotateX(-180deg);
   transition: 0.6s;
   transform-style: preserve-3d;
@@ -184,7 +212,6 @@ main {
 .front,
 .back {
   backface-visibility: hidden;
-  
 }
 
 .front {
@@ -192,23 +219,62 @@ main {
   border-radius: 5px;
   z-index: 2;
   transform: rotateX(0deg)
-  
 }
 
 .back {
   transform: rotateX(180deg)
-swer-input {
-  width: 100%;
+}
+
+#center-section__submit-form {
+  margin-top: 10px;
 }
 
 #submit-form__answer-input {
   width: 60%;
   display: inline-block;
+  margin-top: 10px;
+  padding: 10px;
 }
 
 #submit-form__submit-btn {
   width: 10%;
   display: inline-block;
-
+  padding: 10px;
 }
 
+  
+
+/*--------------- highlight current player -------------*/
+
+.current-player:before, .current-player:after {
+	content: '';
+	position: absolute;
+	left: -2px;
+	top: -2px;
+	background: linear-gradient(50deg, #fb0094, #0000ff, #00ff00,#ffff00, #ff0000, #fb0094, 
+		#0000ff, #00ff00,#ffff00, #ff0000);
+	background-size: 400%;
+	width: calc(100% + 4px);
+	height: calc(100% + 4px);
+	z-index: -1;
+	animation: steam 20s linear infinite;
+}
+
+@keyframes steam {
+	0% {
+		background-position: 0 0;
+	}
+	50% {
+		background-position: 400% 0;
+	}
+	100% {
+		background-position: 0 0;
+	}
+}
+
+.current-player:after {
+	filter: blur(10px);
+}
+
+
+/*--------------- highlight current player -------------*/

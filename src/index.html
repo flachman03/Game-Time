@@ -7,7 +7,7 @@
     <header>
       <div class = "splash__page">
         <dialog class = "splash__box">
-          <h1>Family Fued</h1>
+          <h1>Family Feud</h1>
           <form action="" class = "start__game__form">
             <div class = "Player__1__box name__input__box">
               <label for="player__1">Enter Player 1</label>
@@ -22,15 +22,19 @@
         </dialog>
       </div>
       <section class="header__score-section">
-        <article class="score-section__score-box">
+        <article class="score-section__score-box p1__box">
           <h2 id="score-box__player-1-score">0</h2>
           <h3 id="score-box__player-1">Player 1</h3>
         </article>
       </section>
       <section class="header__title-section">
-        <h1>Family Fued</h1>
+        <h1>Family Feud</h1>
       </section>
       <section class="header__score-section">
+        <div id="score-section__timer">
+          <p id="timer">30</p>
+        </div>
+        <article class="score-section__score-box p2__box">
         <article class="score-section__score-box">
           <h2 id="score-box__player-2-score">0</h2>
           <h3 id="score-box__player-2">Player 2</h3>
@@ -40,27 +44,27 @@
     <main>
       <section class="main__left-section"></section>
       <section class="main__center-section">
-        <figure id="question">Name Something That Can Be Pumped</figure>
+        <figure id="question"></figure>
         <article id="surveys">
           <figure class="answer-card">
             <div class="front">1</div>
             <div class="back">
-              <div class="answer">Gas</div>
-              <div class="score">58</div>
+              <div id = 'answer__one' class="answer"></div>
+              <div id = 'score__one' class="score"></div>
             </div>
           </figure>
           <figure class="answer-card">
             <div class="front">2</div>
             <div class="back">
-              <div class="answer">Tire</div>
-              <div class="score">24</div>
+              <div id = 'answer__two' class="answer"></div>
+              <div id = 'score__two' class="score"></div>
             </div>
           </figure>
           <figure class="answer-card">
             <div class="front">3</div>
             <div class="back">
-              <div class="answer">Iron</div>
-              <div class="score">8</div>
+              <div id = 'answer__three' class="answer"></div>
+              <div id = 'score__three' class="score"></div>
             </div>
           </figure>
         </article>
@@ -71,9 +75,5 @@
       </section>
       <section class="main__right-section"></section>
     </main>
-
-    <!-- <img src="/images/turing-logo.png" alt="turing logo" height="100px" width="100px"> -->
-
-    <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
     </body>
 </html>
