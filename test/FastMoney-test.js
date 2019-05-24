@@ -9,13 +9,14 @@ import Data from '../Data/Data'
 
 
 describe.only('FastMoney', function() {
-	let game, survey, round, fastMoney;
+	let game, survey, round, fastMoney, turn;
 	beforeEach(() => {
 		game = new Game('Ryan', 'Taylor');
 		survey = ['If You Drew Homer Simpson’s Name In A Secret Santa Exchange, What Would You Buy Him?',
 			[{ answer: 'Beer', respondents: 67}, { answer: 'Bowling Ball', respondents: 5}, { answer: 'Donuts', respondents: 24}]];
 		round = new Round(survey, game);
 		fastMoney = new FastMoney(survey, game, 3);
+		turn = fastMoney.createTurn();
 	});
 
 	it('should be a function', function() {
@@ -27,14 +28,15 @@ describe.only('FastMoney', function() {
 	});
 
 	it('should evaluate the user\'s guesses and compare with the correct answers', function() {
-		fastMoney.evaluateGuesses('Donuts');
+
+		fastMoney.evaluateGuesses('Donuts', turn);
 		expect(fastMoney.player1Guesses.length).to.eql(1);
 
-		fastMoney.evaluateGuesses('Duff');
+		fastMoney.evaluateGuesses('Duff', turn);
 		expect(fastMoney.player1Guesses.length).to.eql(1);
 	});
 
-	it('should have a method to apply the user\'s multiplier to the total score', function() {
+	it.skip('should have a method to apply the user\'s multiplier to the total score', function() {
 		fastMoney.multiplyScore(fastMoney.player1Guesses);
 		expect(fastMoney.currentGame.player1.score).to.equal(3)
 	})
