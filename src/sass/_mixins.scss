@@ -5,6 +5,11 @@
   flex-wrap: $wr;
 }
 
+@mixin dimension($h, $w) {
+  height: $h;
+  width: $w;
+}
+
 
 
 // @include flex(flex, center, column, wrap)

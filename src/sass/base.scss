@@ -24,7 +24,7 @@ h1, h2, h3 {
 
 header {
   @include display-flex(flex, null, null, null);
-  height: 30vh;
+  @include dimension(30vh, null);
 }
 
 .header__title-section {
@@ -33,10 +33,11 @@ header {
 }
 
 h1 {
-  color: #fff;
+  color: $text-color;
   font-size: 3em;
+  @include dimension(null, max-content);
   // text-shadow: #000 0px 0px 1px, #000 0px 0px 1px, #000 0px 0px 1px, #000 0px 0px 1px, #000 0px 0px 1px, #000 0px 0px 1px;
-  width: max-content;
+  // width: max-content;
 }
 
 .header__score-section {
@@ -49,14 +50,16 @@ h1 {
   @include display-flex(flex, null, center, null);
   position: relative;
   background: linear-gradient(0deg, #000, #272727);
-  color: #fff;
+  color: $text-color;
   flex-direction: column;
-  width: 80%;
+  @include dimension(null, 80%);
+  // width: 80%;
 }
 
 .score-section__timer {
-  width: 50px;
-  height: 50px;
+  @include dimension(50px, 50px);
+  // width: 50px;
+  // height: 50px;
   background-color: #A7A7A7;
   margin-bottom: 50px;
   @include display-flex(flex, center, null, null);
@@ -72,16 +75,18 @@ h1 {
 .splash__page {
   @include display-flex(flex, center, center, null);
   background: rgba(0, 0, 0, 0.8);
-  height: 100%;
+  @include dimension(100%, 100%);
+  // height: 100%;
+  // width: 100%;
   position: absolute;
-  width: 100%;
   z-index: 2;
 }
 
 .splash__box {
-  height: 400px;
-  width: 400px;
-  border: #EBC685 5px outset;
+  @include dimension(400px, 400px);
+  // height: 400px;
+  // width: 400px;
+  border: $splash-border-color 5px outset;
   background: radial-gradient(circle, rgba(151,3,6,1) 45%, rgba(220,13,12,1) 90%);
   @include display-flex(flex, center, null, wrap);
   margin: auto;
@@ -90,24 +95,29 @@ h1 {
 
 .start__game__form {
   @include display-flex(flex, center, null, wrap);
-  height: 200px;
-  width: 300px;
+  @include dimension(200px, 300px);
+  // height: 200px;
+  // width: 300px;
 }
 
 .name__input__box {
   @include display-flex(flex, null, null, wrap);
-  height: 70px;
-  width: 200px;
+  @include dimension(70px, 200px);
+  // height: 70px;
+  // width: 200px;
 }
 
-.name__input {
-  height: 30px;
-  width: 200px;
+.name__input ,
+#start__game__btn {
+  @include dimension(30px, 200px);
+  // height: 30px;
+  // width: 200px;
 }
 
 #start__game__btn {
-  height: 30px;
-  width: 200px;
+  // @include dimension(30px, 200px);
+  // height: 30px;
+  // width: 200px;
   margin-top: 20px;
 }
 
@@ -116,7 +126,7 @@ h1 {
 }
 
 button {
-  background: #EBC685;
+  background: $splash-border-color;
 }
 
 button:hover {
@@ -147,8 +157,9 @@ main {
 }
 
 #center-section__submit-form {
+  @include dimension(null, 80%);
   margin-top: 10px;
-  width: 80%;
+  // width: 80%;
   @include display-flex(flex, center, flex-end, null);
 }
 
@@ -159,35 +170,36 @@ main {
   background-image: url("https://cdn.pixabay.com/photo/2017/08/05/15/53/gold-2584457_960_720.jpg");
   border: 5px outset #7B6B43;
   flex-direction: column;
-  height: 350px;
+  @include dimension(350px, 750px);
+  // height: 350px;
   margin: auto;
   margin-top: 10px;
   perspective: 1000px;
-  width: 750px;
+  // width: 750px;
 }
 
 #question {
-  color: #ffffff;
+  color: $text-color;
   font-family: 'Family Feud', serif;
   font-size: 40px;
   text-align: center;
 }
 
-
 .answer-card {
   @include display-flex(flex, center, center, null);
+  @include dimension(100px, 700px);
   background: #C9A566;
   border: outset 2px #7B6B43;
-  color: white;
+  color: $text-color;
   font-size: 40px;
-  height: 100px;
+  // height: 100px;
   margin-bottom: 5px;
   margin-top: 5px;
   margin: 10px;
   text-align: center;
   text-shadow: #000 0px 0px 1px, #000 0px 0px 1px, #000 0px 0px 1px, #000 0px 0px 1px, #000 0px 0px 1px, #000 0px 0px 1px;
   text-transform: uppercase;
-  width: 700px;
+  // width: 700px;
 }
 
 .flipped {
@@ -216,16 +228,18 @@ main {
 }
 
 #submit-form__answer-input {
-  width: 60%;
+  @include dimension(40px, 60%);
+  // width: 60%;
   display: inline-block;
   margin-top: 10px;
-  height: 40px;
+  // height: 40px;
 }
 
 #submit-form__submit-btn {
-  width: 10%;
+  @include dimension(40px, 10%);
+  // width: 10%;
   display: inline-block;
-  height: 40px;
+  // height: 40px;
 }
 
   
@@ -239,7 +253,7 @@ main {
 	top: -2px;
 	background: linear-gradient(50deg, #fb0094, #0000ff, #00ff00,#ffff00, #ff0000, #fb0094, 
 		#0000ff, #00ff00,#ffff00, #ff0000);
-	background-size: 400%;
+  background-size: 400%;
 	width: calc(100% + 4px);
 	height: calc(100% + 4px);
 	z-index: -1;
