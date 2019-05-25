@@ -2,8 +2,6 @@
 import $ from 'jquery';
 import '../src/sass/_variables.scss'
 import '../src/sass/_mixins.scss'
-// import '../src/sass/index.scss'
-// import './sass/base.scss';
 import '../src/sass/base.scss'
 
 import Game from '../src/Game.js';
