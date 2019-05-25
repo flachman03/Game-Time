@@ -1,7 +1,8 @@
-@mixin display-flex($flex, $jc, $ac) {
+@mixin display-flex($flex, $jc, $ac, $wr) {
   display: $flex;
   justify-content: $jc;
   align-items: $ac;
+  flex-wrap: $wr;
 }
 
 
