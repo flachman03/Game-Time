@@ -94,8 +94,10 @@ h1 {
 .splash__box {
   height: 400px;
   width: 400px;
-  border: #CBA366 5px solid;
-  background: #D60E0E;
+  border: #EBC685 5px outset;
+  // background: #D60E0E;
+  // background: rgba(220,13,12,1);
+  background: radial-gradient(circle, rgba(151,3,6,1) 45%, rgba(220,13,12,1) 90%);
   display: flex;
   margin: auto;
   flex-wrap: wrap;
@@ -133,6 +135,14 @@ h1 {
   display: none;
 }
 
+button {
+  background: #EBC685;
+}
+
+button:hover {
+  background: #cba366;
+}
+
 /*-----------Main--------------*/
 
 main {
@@ -151,7 +161,7 @@ main {
   justify-content: flex-start;
   align-items: center; 
   flex: 8;
-  
+  padding-bottom: 5%;
 }
 
 .main__right-section {
@@ -159,9 +169,11 @@ main {
 }
 
 #center-section__submit-form {
+  margin-top: 10px;
   width: 80%;
   display: flex;
   justify-content: center;
+  align-items: flex-end;
 }
 
 /*------------ScoreBoard----------*/
@@ -232,21 +244,17 @@ main {
   transform: rotateX(180deg)
 }
 
-#center-section__submit-form {
-  margin-top: 10px;
-}
-
 #submit-form__answer-input {
   width: 60%;
   display: inline-block;
   margin-top: 10px;
-  padding: 10px;
+  height: 40px;
 }
 
 #submit-form__submit-btn {
   width: 10%;
   display: inline-block;
-  padding: 10px;
+  height: 40px;
 }
 
   
