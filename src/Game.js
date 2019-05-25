@@ -2,6 +2,7 @@ import { userInfo } from "os";
 import Player from "./Player";
 import SurveyRepo from './SurveyRepo.js';
 import Round from './Round.js';
+import FastMoney from "./FastMoney";
 
 class Game {
   constructor(p1, p2) {
@@ -24,6 +25,10 @@ class Game {
     return new Round(survey, this)
   }
 
+  createFastMoney(survey) {
+    this.round += 1
+    return new FastMoney(survey, this)
+  }
 
 }
 

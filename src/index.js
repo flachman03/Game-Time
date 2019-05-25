@@ -74,6 +74,7 @@ $('#submit-form__submit-btn').on('click', function() {
   checkCardFlip()
   startTurn()
   $('#submit-form__answer-input').val('');
+  console.log(round.answers)
 })
 
 function checkCardFlip() {
@@ -144,3 +145,37 @@ function updatePlayerScore() {
   $('#score-box__player-1-score').text(game.player1.score)
   $('#score-box__player-2-score').text(game.player2.score)
 }
+
+function changeRound() {
+  if ((round.answers.length === 0) && (game.round < 2)) {
+    survey.randomizeSurveys()
+    survey.findCurrentSurveyById()
+    makeNewRound()
+  } else if ((round.answers.length === 0) && (game.round >= 2)) {
+    survey.randomizeSurveys()
+    survey.findCurrentSurveyById()
+    fastMoneyRound()
+    console.log(round)
+  } else {
+  }
+}
+
+function fastMoneyRound() {
+  round = game.createFastMoney(survey.questionAndAnswers, game)
+  $('#question').text(round.question[0].question)
+  console.log(round.answers)
+  $('#score__one').text(round.scores[0])
+  $('#answer__one').text(round.answers[0])
+  $('#score__two').text(round.scores[1])
+  $('#answer__two').text(round.answers[1])
+  $('#score__three').text(round.scores[2])
+  $('#answer__three').text(round.answers[2])
+  makeNewTurn()
+}
+
+$('#right-section__change-round').on('click', function() {
+  $('#answer__one').parent().parent().removeClass('flipped')
+  $('#answer__two').parent().parent().removeClass('flipped')
+  $('#answer__three').parent().parent().removeClass('flipped')
+  changeRound()
+})
