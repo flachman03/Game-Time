@@ -1,10 +1,9 @@
-@include flex($flex, $jc, $ac, $fd) {
+@mixin display-flex($flex, $jc, $ac) {
   display: $flex;
   justify-content: $jc;
-  align-content: $ac;
-  flex-direction: $fd;
+  align-items: $ac;
 }
 
 
 
-@include flex(center, center, column)
+// @include flex(flex, center, column, wrap)

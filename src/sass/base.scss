@@ -1,3 +1,5 @@
+@import './variables';
+@import './_mixins';
 
 * {
   box-sizing: border-box;
@@ -26,10 +28,8 @@ header {
 }
 
 .header__title-section {
-  align-items: center;
-  display: flex;
+  @include display-flex(flex, center, center);
   flex: 2;
-  justify-content: center;
 }
 
 h1 {
@@ -40,11 +40,9 @@ h1 {
 }
 
 .header__score-section {
-  align-items: center;
-  display: flex;
+  @include display-flex(flex, flex-end, center);
   flex: 1;
   flex-direction: column;
-  justify-content: flex-end;
 }
 
 .score-section__score-box {
