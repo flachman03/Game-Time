@@ -151,12 +151,10 @@ function changeRound() {
     survey.randomizeSurveys()
     survey.findCurrentSurveyById()
     makeNewRound()
-  } else if ((round.answers.length === 0) && (game.round >= 2)) {
+  } else if ((round.answers.length === 0) && (game.round >=  2)) {
     survey.randomizeSurveys()
     survey.findCurrentSurveyById()
     fastMoneyRound()
-    console.log(round)
-  } else {
   }
 }
 
@@ -178,4 +176,8 @@ $('#right-section__change-round').on('click', function() {
   $('#answer__two').parent().parent().removeClass('flipped')
   $('#answer__three').parent().parent().removeClass('flipped')
   changeRound()
+})
+
+$('#left-section__quit-game').on('click', function() {
+  location.reload()
 })
