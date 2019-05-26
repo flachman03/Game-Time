@@ -28,7 +28,7 @@ describe.only('FastMoney', function() {
 	});
 
 	it('should evaluate the user\'s guesses and compare with the correct answers', function() {
-
+		turn.updateAnswers();
 		fastMoney.evaluateGuesses('Donuts', turn);
 		expect(fastMoney.player1Guesses.length).to.eql(1);
 

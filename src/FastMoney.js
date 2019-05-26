@@ -17,6 +17,7 @@ class FastMoney extends Round {
 			} else if(answer === guess && turn.player.id === 2) {
 				this.player2Guesses.push(guess)
 			}
+			console.log(turn.player.score)
 		});
 					
 	}
