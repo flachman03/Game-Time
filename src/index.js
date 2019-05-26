@@ -8,7 +8,13 @@ import Game from '../src/Game.js';
 import SurveyRepo from './SurveyRepo';
 import Round from './Round'
 
-console.log('This is the JavaScript entry file - your code begins here.');
+
+var correctBuzzer = document.createElement('audio');
+correctBuzzer.setAttribute('src', 'http://www.qwizx.com/gssfx/usa/ff-clang.wav');
+
+var wrongBuzzer = document.createElement('audio');
+wrongBuzzer.setAttribute('src', 'http://www.qwizx.com/gssfx/usa/ff-strike.wav');
+
 let game, round, survey, turn;
 
 $('.start__game__form').keyup( () => {
@@ -81,7 +87,11 @@ $('.answer-card').on('click', function() {
 
 $('#submit-form__submit-btn').on('click', function() {
   checkCardFlip()
+  if(game.round > 2) {
+  	makeBlankTurn()
+  } else {
   startTurn()
+  }
   $('#submit-form__answer-input').val('');
   // checkRoundHighlight()
   console.log(round.answers)
@@ -171,13 +181,6 @@ function updatePlayerScore() {
   $('#score-box__player-2-score').text(game.player2.score)
 }
 
-/*---------Sound Effects--------*/
-
-var correctBuzzer = document.createElement('audio');
-correctBuzzer.setAttribute('src', 'http://www.qwizx.com/gssfx/usa/ff-clang.wav');
-
-var wrongBuzzer = document.createElement('audio');
-wrongBuzzer.setAttribute('src', 'http://www.qwizx.com/gssfx/usa/ff-strike.wav')
 
 function changeRound() {
   if ((round.answers.length === 0) && (game.round < 2)) {
