@@ -135,6 +135,14 @@ button:hover {
   background: #cba366;
 }
 
+#left-section__restart-btn,
+#left-section__quit-btn,
+#right-section__change-round-btn {
+  width: 100%;
+  margin-top: 20px;
+  font-size: 24px;
+}
+
 /*-----------Main--------------*/
 
 main {
@@ -145,6 +153,10 @@ main {
 
 .main__left-section {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .main__center-section {
@@ -152,12 +164,16 @@ main {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center; 
-  flex: 8;
+  flex: 6;
   padding-bottom: 5%;
 }
 
 .main__right-section {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 #center-section__submit-form {
