@@ -57,10 +57,10 @@ function makeNewRound() {
   $('#answer__two').text(round.answers[1])
   $('#score__three').text(round.scores[2])
   $('#answer__three').text(round.answers[2])
-  makeNewTurn()
+  makeBlankTurn()
 }
 
-function makeNewTurn() {
+function makeBlankTurn() {
   playerNames(game.player1.name, game.player2.name)
   $('.p1__box').addClass('current-player')
   turn = round.createBlankturn()
@@ -83,6 +83,7 @@ $('#submit-form__submit-btn').on('click', function() {
   checkCardFlip()
   startTurn()
   $('#submit-form__answer-input').val('');
+  // checkRoundHighlight()
   console.log(round.answers)
 })
 
@@ -182,13 +183,13 @@ function changeRound() {
   if ((round.answers.length === 0) && (game.round < 2)) {
     survey.randomizeSurveys()
     survey.findCurrentSurveyById()
+    removeFlipClass()
     makeNewRound()
-  } else if ((round.answers.length === 0) && (game.round >= 2)) {
+  } else if ((round.answers.length === 0) && (game.round >=  2)) {
     survey.randomizeSurveys()
     survey.findCurrentSurveyById()
+    removeFlipClass()
     fastMoneyRound()
-    console.log(round)
-  } else {
   }
 }
 
@@ -202,12 +203,29 @@ function fastMoneyRound() {
   $('#answer__two').text(round.answers[1])
   $('#score__three').text(round.scores[2])
   $('#answer__three').text(round.answers[2])
-  makeNewTurn()
+  makeBlankTurn()
 }
 
 $('#right-section__change-round').on('click', function() {
+  changeRound()
+})
+
+$('#left-section__quit-game').on('click', function() {
+  location.reload()
+})
+
+function removeFlipClass() {
   $('#answer__one').parent().parent().removeClass('flipped')
   $('#answer__two').parent().parent().removeClass('flipped')
   $('#answer__three').parent().parent().removeClass('flipped')
   changeRound()
-})
+}
+
+// function checkRoundHighlight() {
+//   if (round.answers.length === 0) {
+//     $('.p1__box').removeClass('current-player')
+//     $('.p2__box').removeClass('current-player')
+//     $('.change-round').addClass('current-player')
+//   }
+// }
+

@@ -118,6 +118,14 @@ button:hover {
   background: #cba366;
 }
 
+#left-section__restart-btn,
+#left-section__quit-btn,
+#right-section__change-round-btn {
+  width: 100%;
+  margin-top: 20px;
+  font-size: 24px;
+}
+
 /*-----------Main--------------*/
 
 main {
@@ -127,17 +135,25 @@ main {
 
 .main__left-section {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .main__center-section {
   @include display-flex(flex, flex-start, center, null);
   flex-direction: column;
   flex: 8;
-  padding-bottom: 5%;
+  justify-content: flex-start;
 }
 
 .main__right-section {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 #center-section__submit-form {
