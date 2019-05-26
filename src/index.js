@@ -94,15 +94,24 @@ $('#submit-form__submit-btn').on('click', function() {
   }
   $('#submit-form__answer-input').val('');
   // checkRoundHighlight()
+  console.log(game.round)
   console.log(round.answers)
 })
 
 function wrongAnswer() {
-  $("h1").prepend("<div id=\"red-x\">X</div>")
+  $('h1').prepend("<div id=\"red-x\">X</div>")
   setTimeout(function() {
-    $("#red-x").remove()
+    $('#red-x').remove()
   }, 2000);
   wrongBuzzer.play();
+}
+
+function checkMultiplier() {
+	if($('#multiplier-form__input').val().includes((1, 3, 5))) {
+		fastMoney.multiplier = $('#multiplier-form__input').val();
+	} else {
+		alert('Multiplier can only have a value of 1, 3, or 5! Please enter a valid number.')		
+	}
 }
 
 function checkCardFlip() {
