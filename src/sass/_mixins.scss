@@ -1,10 +1,15 @@
-@include flex($flex, $jc, $ac, $fd) {
+@mixin display-flex($flex, $jc, $ac, $wr) {
   display: $flex;
   justify-content: $jc;
-  align-content: $ac;
-  flex-direction: $fd;
+  align-items: $ac;
+  flex-wrap: $wr;
+}
+
+@mixin dimension($h, $w) {
+  height: $h;
+  width: $w;
 }
 
 
 
-@include flex(center, center, column)
+// @include flex(flex, center, column, wrap)
