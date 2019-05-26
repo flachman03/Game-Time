@@ -86,18 +86,31 @@ $('#submit-form__submit-btn').on('click', function() {
   console.log(round.answers)
 })
 
+function wrongAnswer() {
+  $("h1").prepend("<div id=\"red-x\">X</div>")
+  setTimeout(function() {
+    $("#red-x").remove()
+  }, 2000);
+  wrongBuzzer.play();
+}
+
 function checkCardFlip() {
   round.answers.find
   if ($('#submit-form__answer-input').val().toLowerCase() === 
   $('#answer__one').text().toLowerCase()) {
     $('#answer__one').parent().parent().addClass('flipped')
+  	correctBuzzer.play();
   } else if ($('#submit-form__answer-input').val().toLowerCase() === 
   $('#answer__two').text().toLowerCase()) {
     $('#answer__two').parent().parent().addClass('flipped')
+    correctBuzzer.play();
   } else if ($('#submit-form__answer-input').val().toLowerCase() === 
   $('#answer__three').text().toLowerCase()) {
     $('#answer__three').parent().parent().addClass('flipped')
-  }
+    correctBuzzer.play();
+  } else {
+  wrongAnswer()
+}
 
 }
 

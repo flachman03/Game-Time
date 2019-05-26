@@ -36,12 +36,8 @@ h1 {
   @include dimension(null, max-content);
   color: $text-color;
   font-size: 3em;
-<<<<<<< HEAD:src/css/base.scss
   text-shadow: #000 0px 0px 1px, #000 0px 0px 1px, #000 0px 0px 1px, #000 0px 0px 1px, #000 0px 0px 1px, #000 0px 0px 1px;
   width: max-content;
-=======
-  // text-shadow: #000 0px 0px 1px, #000 0px 0px 1px, #000 0px 0px 1px, #000 0px 0px 1px, #000 0px 0px 1px, #000 0px 0px 1px;
->>>>>>> 9ad134b9a1ff54610000d5cb72f0bd366413561c:src/sass/base.scss
 }
 
 .header__score-section {
@@ -153,13 +149,10 @@ main {
 /*------------ScoreBoard----------*/
 
 #surveys {
-<<<<<<< HEAD:src/css/base.scss
   align-items: center;
   background-color: #000;
-=======
   @include display-flex(flex, space-around, center, null);
   @include dimension(350px, 750px);
->>>>>>> 9ad134b9a1ff54610000d5cb72f0bd366413561c:src/sass/base.scss
   background-image: url("https://cdn.pixabay.com/photo/2017/08/05/15/53/gold-2584457_960_720.jpg");
   border: 5px solid black;
   border: 5px outset #7B6B43;
@@ -224,11 +217,9 @@ main {
   @include dimension(40px, 60%);
   display: inline-block;
   margin-top: 10px;
-<<<<<<< HEAD:src/css/base.scss
   padding: 10px;
   height: 40px;
-=======
->>>>>>> 9ad134b9a1ff54610000d5cb72f0bd366413561c:src/sass/base.scss
+
 }
 
 #submit-form__submit-btn {
@@ -268,7 +259,17 @@ main {
 	filter: blur(10px);
 }
 
-<<<<<<< HEAD:src/css/base.scss
-=======
-/*--------------- highlight current player -------------*/
->>>>>>> 9ad134b9a1ff54610000d5cb72f0bd366413561c:src/sass/base.scss
+/*-------------wrong answer X-------------*/
+
+#red-x {
+  position: fixed;
+  color: red;
+  font-weight: 700px;
+  font-size: 300px;
+  text-align: center;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 100;
+}
+
