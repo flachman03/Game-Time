@@ -12,9 +12,9 @@ class FastMoney extends Round {
 
   evaluateGuesses(guess, turn) {
     this.answers.filter(answer => {
-      if(answer === guess && turn.player.id === 1) {
+      if (answer === guess && turn.player.id === 1) {
         this.player1Guesses.push(guess)
-      } else if(answer === guess && turn.player.id === 2) {
+      } else if (answer === guess && turn.player.id === 2) {
         this.player2Guesses.push(guess)
       }
       console.log(turn.player.score)
