@@ -8,7 +8,13 @@ import Game from '../src/Game.js';
 import SurveyRepo from './SurveyRepo';
 import Round from './Round'
 
-console.log('This is the JavaScript entry file - your code begins here.');
+
+var correctBuzzer = document.createElement('audio');
+correctBuzzer.setAttribute('src', 'http://www.qwizx.com/gssfx/usa/ff-clang.wav');
+
+var wrongBuzzer = document.createElement('audio');
+wrongBuzzer.setAttribute('src', 'http://www.qwizx.com/gssfx/usa/ff-strike.wav');
+
 let game, round, survey, turn;
 
 $('.start__game__form').keyup( () => {
@@ -25,9 +31,6 @@ $('#start__game__btn').on('click', () => {
   game = new Game($('#player__1').val(), $('#player__2').val())
   hideTimer(1)
   fetchData()
-  turn = round.createBlankturn()
-  turn.updateTimer()
-  runTimer()
 })
 
 function fetchData() {
@@ -89,23 +92,51 @@ $('.answer-card').on('click', function() {
 
 $('#submit-form__submit-btn').on('click', function() {
   checkCardFlip()
+  if(game.round > 2) {
+  	makeBlankTurn()
+  } else {
   startTurn()
+  }
   $('#submit-form__answer-input').val('');
   checkRoundHighlight()
   console.log(round.answers)
 })
 
+function wrongAnswer() {
+  $('h1').prepend("<div id=\"red-x\">X</div>")
+  setTimeout(removeX, 2000);
+  wrongBuzzer.play();
+}
+
+function removeX() {
+  $("div").remove("#red-x");
+}
+
+// function checkMultiplier() {
+// 	if($('#multiplier-form__input').val().includes((1, 3, 5))) {
+// 		fastMoney.multiplier = $('#multiplier-form__input').val();
+// 	} else {
+// 		alert('Multiplier can only have a value of 1, 3, or 5! Please enter a valid number.')		
+// 	}
+// }
+
+
 function checkCardFlip() {
-  round.answers.find
+  // round.answers.find
   if ($('#submit-form__answer-input').val().toLowerCase() === 
   $('#answer__one').text().toLowerCase()) {
     $('#answer__one').parent().parent().addClass('flipped')
+  	correctBuzzer.play();
   } else if ($('#submit-form__answer-input').val().toLowerCase() === 
   $('#answer__two').text().toLowerCase()) {
     $('#answer__two').parent().parent().addClass('flipped')
+    correctBuzzer.play();
   } else if ($('#submit-form__answer-input').val().toLowerCase() === 
   $('#answer__three').text().toLowerCase()) {
     $('#answer__three').parent().parent().addClass('flipped')
+    correctBuzzer.play();
+  } else {
+    wrongAnswer()
   }
 
 }
@@ -190,6 +221,7 @@ function fastMoneyRound() {
   $('#answer__two').text(round.answers[1])
   $('#score__three').text(round.scores[2])
   $('#answer__three').text(round.answers[2])
+  $('#center-section__multiplier-form').removeClass('slideUp').addClass('slideDown')
   makeBlankTurn()
 }
 
@@ -216,8 +248,5 @@ function checkRoundHighlight() {
 }
 /*---------Sound Effects--------*/
 
-var correctBuzzer = document.createElement('audio');
-correctBuzzer.setAttribute('src', 'http://www.qwizx.com/gssfx/usa/ff-clang.wav');
 
-var wrongBuzzer = document.createElement('audio');
-wrongBuzzer.setAttribute('src', 'http://www.qwizx.com/gssfx/usa/ff-strike.wav')
+
