@@ -216,6 +216,7 @@ function fastMoneyRound() {
   $('#answer__two').text(round.answers[1])
   $('#score__three').text(round.scores[2])
   $('#answer__three').text(round.answers[2])
+  $('#center-section__multiplier-form').removeClass('slideUp').addClass('slideDown')
   makeBlankTurn()
 }
 

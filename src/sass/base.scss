@@ -170,7 +170,6 @@ main {
   @include display-flex(flex, space-around, center, null);
   @include dimension(350px, 750px);
   background-image: url("https://cdn.pixabay.com/photo/2017/08/05/15/53/gold-2584457_960_720.jpg");
-  border: 5px solid black;
   border: 5px outset #7B6B43;
   flex-direction: column;
   margin: auto;
@@ -245,12 +244,26 @@ main {
 }
 
 #center-section__multiplier-form {
+  border: 5px outset #7B6B43;
   label {
-  background-color: white;
+  background-color: $splash-border-color;
   }
   button {
+  border-radius: 15%;
   width: 50px;
   }
+}
+
+.slideUp {
+  transform: translateY(-45px);
+  z-index: -1;
+  
+}
+
+.slideDown {
+  transform: translateY(0px)
+  z-index: 0;
+  
 }
 
 /*--------------- highlight current player -------------*/
