@@ -1,6 +1,9 @@
 
 import $ from 'jquery';
-import './css/base.scss';
+import '../src/sass/_variables.scss'
+import '../src/sass/_mixins.scss'
+import '../src/sass/base.scss'
+
 import Game from '../src/Game.js';
 import SurveyRepo from './SurveyRepo';
 import Round from './Round'
