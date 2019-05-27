@@ -73,6 +73,12 @@ function playerNames(name1, name2) {
   $('#score-box__player-2').text(name2)
 }
 
+
+$('.answer-card').on('click', function() {
+  $(this).addClass('flipped')
+})
+
+
 $('#submit-form__submit-btn').on('click', function() {
   checkCardFlip()
   startTurn()
@@ -102,6 +108,7 @@ $('#score-section__timer').on('DOMSubtreeModified', function() {
     startTurn()
   }
 })
+
 
 function displayTimer() {
   $('#timer').text(turn.second)
@@ -144,6 +151,7 @@ function hideTimer(index) {
     $('.timer-1').parent().addClass('hidden')
   }
 }
+
 
 function updatePlayerScore() {
   $('#score-box__player-1-score').text(game.player1.score)
@@ -198,3 +206,10 @@ function checkRoundHighlight() {
     $('#right-section__change-round-btn').addClass('current-player')
   }
 }
+/*---------Sound Effects--------*/
+
+var correctBuzzer = document.createElement('audio');
+correctBuzzer.setAttribute('src', 'http://www.qwizx.com/gssfx/usa/ff-clang.wav');
+
+var wrongBuzzer = document.createElement('audio');
+wrongBuzzer.setAttribute('src', 'http://www.qwizx.com/gssfx/usa/ff-strike.wav')

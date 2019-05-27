@@ -223,16 +223,23 @@ main {
   transform: rotateX(180deg)
 }
 
+#center-section__submit-form {
+  margin-top: 10px;
+}
+
 #submit-form__answer-input {
   @include dimension(40px, 60%);
   display: inline-block;
   margin-top: 10px;
+  padding: 10px;
 }
 
 #submit-form__submit-btn {
   @include dimension(40px, 10%);
   display: inline-block;
 }
+
+  
 
 /*--------------- highlight current player -------------*/
 
