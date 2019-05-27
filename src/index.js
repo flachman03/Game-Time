@@ -3,13 +3,15 @@ import $ from 'jquery';
 import '../src/sass/_variables.scss'
 import '../src/sass/_mixins.scss'
 import '../src/sass/base.scss'
+import DomUpdates from './DomUpdates'
 
 import Game from '../src/Game.js';
 import SurveyRepo from './SurveyRepo';
 import Round from './Round'
 
-console.log('This is the JavaScript entry file - your code begins here.');
 let game, round, survey, turn;
+
+/*-------------Event Listeners--------------*/
 
 $('.start__game__form').keyup( () => {
   if ($('#player__1').val() && $('#player__2').val()) {
@@ -23,11 +25,39 @@ $('#start__game__btn').on('click', () => {
   event.preventDefault()
   $('.splash__page').fadeOut()
   game = new Game($('#player__1').val(), $('#player__2').val())
-  hideTimer(1)
+  DomUpdates.hideTimer(1)
   fetchData()
-  turn = round.createBlankturn()
-  turn.updateTimer()
-  runTimer()
+})
+
+$('.answer-card').on('click', function() {
+  $(this).addClass('flipped')
+})
+
+$('#submit-form__submit-btn').on('click', function() {
+  DomUpdates.checkCardFlip()
+  if (game.round > 2) {
+    fastMoneyTurn()
+  } else {
+    startTurn()
+  }
+  $('#submit-form__answer-input').val('');
+  DomUpdates.checkRoundHighlight(round)
+  console.log(round.answers)
+})
+
+$('#right-section__change-round-btn').on('click', function() {
+  changeRound()
+})
+
+$('#left-section__quit-btn').on('click', function() {
+  location.reload()
+})
+
+$('#score-section__timer').on('DOMSubtreeModified', function() {
+  if ($('#timer').text() === '0') {
+    turn.resetTimer()
+    startTurn()
+  }
 })
 
 function fetchData() {
@@ -52,80 +82,23 @@ function makeNewSurvey(stuff) {
 
 function makeNewRound() {
   round = game.createRound(survey.questionAndAnswers, game)
-  $('#question').text(round.question[0].question)
   console.log(round.answers)
-  $('#score__one').text(round.scores[0])
-  $('#answer__one').text(round.answers[0])
-  $('#score__two').text(round.scores[1])
-  $('#answer__two').text(round.answers[1])
-  $('#score__three').text(round.scores[2])
-  $('#answer__three').text(round.answers[2])
+  DomUpdates.displayRound(round)
   makeBlankTurn()
 }
 
 function makeBlankTurn() {
-  playerNames(game.player1.name, game.player2.name)
+  DomUpdates.playerNames(game.player1.name, game.player2.name)
   $('.p1__box').addClass('current-player')
   turn = round.createBlankturn()
   turn.updateTimer()
+  DomUpdates.hilightPlayer(turn)
   runTimer()
-}
-
-function playerNames(name1, name2) {
-  $('#score-box__player-1').text(name1)
-  $('#score-box__player-2').text(name2)
-}
-
-
-$('.answer-card').on('click', function() {
-  $(this).addClass('flipped')
-})
-
-
-$('.answer-card').on('click', function() {
-  $(this).addClass('flipped')
-})
-
-
-$('#submit-form__submit-btn').on('click', function() {
-  checkCardFlip()
-  startTurn()
-  $('#submit-form__answer-input').val('');
-  checkRoundHighlight()
-  console.log(round.answers)
-})
-
-function checkCardFlip() {
-  round.answers.find
-  if ($('#submit-form__answer-input').val().toLowerCase() === 
-  $('#answer__one').text().toLowerCase()) {
-    $('#answer__one').parent().parent().addClass('flipped')
-  } else if ($('#submit-form__answer-input').val().toLowerCase() === 
-  $('#answer__two').text().toLowerCase()) {
-    $('#answer__two').parent().parent().addClass('flipped')
-  } else if ($('#submit-form__answer-input').val().toLowerCase() === 
-  $('#answer__three').text().toLowerCase()) {
-    $('#answer__three').parent().parent().addClass('flipped')
-  }
-
-}
-
-$('#score-section__timer').on('DOMSubtreeModified', function() {
-  if ($('#timer').text() === '0') {
-    turn.resetTimer()
-    startTurn()
-  }
-})
-
-
-function displayTimer() {
-  $('#timer').text(turn.second)
-  $('#timer-2').text(turn.second)
 }
 
 function runTimer() {
   let counter;
-  counter = setInterval(() => displayTimer(), 1000)
+  counter = setInterval(() => DomUpdates.displayTimer(turn), 1000)
 }
 
 function startTurn () {
@@ -134,90 +107,35 @@ function startTurn () {
   turn.resetTimer()
   let guess = turn.evaluateGuess($('#submit-form__answer-input').val())
   round.removeAnswer(guess, turn.player)
-  hilightPlayer()
-  updatePlayerScore()
-}
-
-function hilightPlayer() {
-  if (turn.player.id === 1) {
-    $('.p1__box').removeClass('current-player')
-    $('.p2__box').addClass('current-player')
-    hideTimer(2)
-  } else {
-    $('.p2__box').removeClass('current-player')
-    $('.p1__box').addClass('current-player')
-    hideTimer(1)
-  }
-}
-
-function hideTimer(index) {
-  if (index === 1) {
-    $('.timer-1').parent().removeClass('hidden')
-    $('.timer-2').parent().addClass('hidden')
-  } else {
-    $('.timer-2').parent().removeClass('hidden')
-    $('.timer-1').parent().addClass('hidden')
-  }
-}
-
-
-function updatePlayerScore() {
-  $('#score-box__player-1-score').text(game.player1.score)
-  $('#score-box__player-2-score').text(game.player2.score)
+  DomUpdates.hilightPlayer(turn)
+  DomUpdates.updatePlayerScore(game)
 }
 
 function changeRound() {
   if ((round.answers.length === 0) && (game.round < 2)) {
     survey.randomizeSurveys()
     survey.findCurrentSurveyById()
-    removeFlipClass()
+    DomUpdates.removeFlipClass()
     makeNewRound()
   } else if ((round.answers.length === 0) && (game.round >=  2)) {
     survey.randomizeSurveys()
     survey.findCurrentSurveyById()
-    removeFlipClass()
+    DomUpdates.removeFlipClass()
     fastMoneyRound()
   }
 }
 
 function fastMoneyRound() {
   round = game.createFastMoney(survey.questionAndAnswers, game)
-  $('#question').text(round.question[0].question)
   console.log(round.answers)
-  $('#score__one').text(round.scores[0])
-  $('#answer__one').text(round.answers[0])
-  $('#score__two').text(round.scores[1])
-  $('#answer__two').text(round.answers[1])
-  $('#score__three').text(round.scores[2])
-  $('#answer__three').text(round.answers[2])
+  DomUpdates.displayRound(round)
   makeBlankTurn()
 }
 
-$('#right-section__change-round-btn').on('click', function() {
-  changeRound()
-})
-
-$('#left-section__quit-btn').on('click', function() {
-  location.reload()
-})
-
-function removeFlipClass() {
-  $('#answer__one').parent().parent().removeClass('flipped')
-  $('#answer__two').parent().parent().removeClass('flipped')
-  $('#answer__three').parent().parent().removeClass('flipped')
+function fastMoneyTurn() {
+  event.preventDefault()
+  turn = round.createBlankturn()
+  let guess = turn.evaluateGuess($('#submit-form__answer-input').val())
+  round.evaluateGuesses(guess, turn)
+  DomUpdates.hilightPlayer(turn)
 }
-
-function checkRoundHighlight() {
-  if (round.answers.length === 0) {
-    $('.p1__box').removeClass('current-player')
-    $('.p2__box').removeClass('current-player')
-    $('#right-section__change-round-btn').addClass('current-player')
-  }
-}
-/*---------Sound Effects--------*/
-
-var correctBuzzer = document.createElement('audio');
-correctBuzzer.setAttribute('src', 'http://www.qwizx.com/gssfx/usa/ff-clang.wav');
-
-var wrongBuzzer = document.createElement('audio');
-wrongBuzzer.setAttribute('src', 'http://www.qwizx.com/gssfx/usa/ff-strike.wav')
