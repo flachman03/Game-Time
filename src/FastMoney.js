@@ -3,11 +3,10 @@ import Turn from './Turn';
 import Game from './Game';
 
 class FastMoney extends Round {
-	constructor(survey, game, multiplier) {
+	constructor(survey, game) {
 		super(survey, game)
 		this.player1Guesses = [];
 		this.player2Guesses = [];
-		this.multiplier = multiplier || 1;
 	}
 
 	evaluateGuesses(guess, turn) {
@@ -17,13 +16,16 @@ class FastMoney extends Round {
 			} else if(answer === guess && turn.player.id === 2) {
 				this.player2Guesses.push(guess)
 			}
-			console.log(turn.player.score)
 		});
 					
 	}
 
-	multiplyScore(guesses, turn) {
-		
+	evaluateScore(guesses) {
+		return guesses.reduce((acc, guess) => {
+			let guessIndex = this.answers.indexOf(guess)
+			acc += this.scores[guessIndex]
+			return acc
+		}, 0)
 	}
 }
 
