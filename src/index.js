@@ -77,7 +77,7 @@ $('#submit-form__submit-btn').on('click', function() {
   checkCardFlip()
   startTurn()
   $('#submit-form__answer-input').val('');
-  // checkRoundHighlight()
+  checkRoundHighlight()
   console.log(round.answers)
 })
 
@@ -177,11 +177,11 @@ function fastMoneyRound() {
   makeBlankTurn()
 }
 
-$('#right-section__change-round').on('click', function() {
+$('#right-section__change-round-btn').on('click', function() {
   changeRound()
 })
 
-$('#left-section__quit-game').on('click', function() {
+$('#left-section__quit-btn').on('click', function() {
   location.reload()
 })
 
@@ -191,10 +191,10 @@ function removeFlipClass() {
   $('#answer__three').parent().parent().removeClass('flipped')
 }
 
-// function checkRoundHighlight() {
-//   if (round.answers.length === 0) {
-//     $('.p1__box').removeClass('current-player')
-//     $('.p2__box').removeClass('current-player')
-//     $('.change-round').addClass('current-player')
-//   }
-// }
+function checkRoundHighlight() {
+  if (round.answers.length === 0) {
+    $('.p1__box').removeClass('current-player')
+    $('.p2__box').removeClass('current-player')
+    $('#right-section__change-round-btn').addClass('current-player')
+  }
+}

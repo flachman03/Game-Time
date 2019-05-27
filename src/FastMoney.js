@@ -12,7 +12,7 @@ class FastMoney extends Round {
 
   evaluateGuesses(guess) {
     this.answers.filter(answer => {
-      if(answer === guess) {
+      if (answer === guess) {
         this.player1Guesses.push(guess)
       } 
     });

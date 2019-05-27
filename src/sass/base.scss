@@ -125,6 +125,10 @@ button:hover {
   font-size: 24px;
 }
 
+#right-section__change-round-btn {
+  position: relative;
+}
+
 /*-----------Main--------------*/
 
 main {
@@ -143,22 +147,14 @@ main {
 .main__center-section {
   @include display-flex(flex, flex-start, center, null);
   flex-direction: column;
-<<<<<<< HEAD:src/css/base.scss
-  justify-content: flex-start;
-  align-items: center; 
   flex: 6;
-=======
-  flex: 8;
->>>>>>> 9ad134b9a1ff54610000d5cb72f0bd366413561c:src/sass/base.scss
   padding-bottom: 5%;
 }
 
 .main__right-section {
   flex: 1;
-  display: flex;
+  @include display-flex(flex, center, center, null);
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
 #center-section__submit-form {
