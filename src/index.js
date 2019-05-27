@@ -25,6 +25,9 @@ $('#start__game__btn').on('click', () => {
   game = new Game($('#player__1').val(), $('#player__2').val())
   hideTimer(1)
   fetchData()
+  turn = round.createBlankturn()
+  turn.updateTimer()
+  runTimer()
 })
 
 function fetchData() {
@@ -72,6 +75,11 @@ function playerNames(name1, name2) {
   $('#score-box__player-1').text(name1)
   $('#score-box__player-2').text(name2)
 }
+
+
+$('.answer-card').on('click', function() {
+  $(this).addClass('flipped')
+})
 
 
 $('.answer-card').on('click', function() {
