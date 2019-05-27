@@ -29,6 +29,15 @@ class FastMoney extends Round {
   }
 }
 
+// console.log(this.player1Guesses)
+// console.log(this.player2Guesses)				
+// }
+	
+// evaluateScore() {
+		
+// }
+// } 
+
 export default FastMoney;
 
 
