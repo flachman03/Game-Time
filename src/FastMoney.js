@@ -21,9 +21,20 @@ class FastMoney extends Round {
     console.log(this.player2Guesses)				
   }
 	
-	evaluateScore() {
-		
-	}
+  evaluateScore(guesses) {
+    return guesses.reduce((acc, guess) => {
+      let guessIndex = this.answers.indexOf(guess)
+      acc += this.scores[guessIndex]
+      return acc
+    }, 0)
+  }
+	
+  multiplyScore(round, game) {
+    let score1 = round.evaluateScore([... new Set(this.player1Guesses)])
+    let score2 = round.evaluateScore([... new Set(this.player2Guesses)])
+    game.player1.score += (game.player1.multiplier * score1)
+    game.player2.score += (game.player2.multiplier * score2)
+  }
 } 
 
 export default FastMoney;

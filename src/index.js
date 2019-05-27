@@ -54,11 +54,31 @@ $('#left-section__quit-btn').on('click', function() {
 })
 
 $('#score-section__timer').on('DOMSubtreeModified', function() {
-  if ($('#timer').text() === '0') {
-    turn.resetTimer()
-    startTurn()
+  if (game.round === 3 && round.turnNumber === 3) {
+    clearInterval(turn.counter)
+    round.multiplyScore(round, game)
+    DomUpdates.updatePlayerScore(game)
+    console.log('game over')
+    $('#score-section__timer').remove()
+  } else {
+    if ($('#timer').text() === '0') {
+      turn.resetTimer()
+      startTurn()
+    }
   }
 })
+
+$('#center-section__multiplier-form').on('click', 'button', function(e) {
+  if (game.round > 2) {
+    round.turnNumber++
+    let turn = round.createBlankturn()
+    turn.player.multiplier = Number(e.target.innerText)
+    console.log(turn.player, turn.player.multiplier)
+    round.turnNumber--
+  }
+})
+
+/*-----------Functions-------------*/
 
 function fetchData() {
   fetch('https://fe-apps.herokuapp.com/api/v1/gametime/1903/family-feud/data')
@@ -113,14 +133,10 @@ function startTurn () {
 
 function changeRound() {
   if ((round.answers.length === 0) && (game.round < 2)) {
-    survey.randomizeSurveys()
-    survey.findCurrentSurveyById()
-    DomUpdates.removeFlipClass()
+    createSurveys()
     makeNewRound()
   } else if ((round.answers.length === 0) && (game.round >=  2)) {
-    survey.randomizeSurveys()
-    survey.findCurrentSurveyById()
-    DomUpdates.removeFlipClass()
+    createSurveys()
     fastMoneyRound()
   }
 }
@@ -134,8 +150,15 @@ function fastMoneyRound() {
 
 function fastMoneyTurn() {
   event.preventDefault()
-  turn = round.createBlankturn()
+  let turn = round.createBlankturn()
   let guess = turn.evaluateGuess($('#submit-form__answer-input').val())
   round.evaluateGuesses(guess, turn)
   DomUpdates.hilightPlayer(turn)
 }
+
+function createSurveys() {
+  survey.randomizeSurveys()
+  survey.findCurrentSurveyById()
+  DomUpdates.removeFlipClass()
+}
+
