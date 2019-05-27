@@ -241,12 +241,26 @@ main {
 }
 
 #center-section__multiplier-form {
+  border: 5px outset #7B6B43;
   label {
-  background-color: white;
+  background-color: $splash-border-color;
   }
   button {
+  border-radius: 15%;
   width: 50px;
   }
+}
+
+.slideUp {
+  transform: translateY(-45px);
+  z-index: -1;
+  
+}
+
+.slideDown {
+  transform: translateY(0px);
+  z-index: 0;
+  
 }
 
 /*--------------- highlight current player -------------*/

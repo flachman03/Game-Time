@@ -17,10 +17,9 @@ class FastMoney extends Round {
         this.player2Guesses.push(guess)
       }
     });
-    console.log(this.player1Guesses)
-    console.log(this.player2Guesses)				
+					
   }
-	
+
   evaluateScore(guesses) {
     return guesses.reduce((acc, guess) => {
       let guessIndex = this.answers.indexOf(guess)
