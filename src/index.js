@@ -106,13 +106,14 @@ function wrongAnswer() {
   wrongBuzzer.play();
 }
 
-function checkMultiplier() {
-	if($('#multiplier-form__input').val().includes((1, 3, 5))) {
-		fastMoney.multiplier = $('#multiplier-form__input').val();
-	} else {
-		alert('Multiplier can only have a value of 1, 3, or 5! Please enter a valid number.')		
-	}
-}
+// function checkMultiplier() {
+// 	if($('#multiplier-form__input').val().includes((1, 3, 5))) {
+// 		fastMoney.multiplier = $('#multiplier-form__input').val();
+// 	} else {
+// 		alert('Multiplier can only have a value of 1, 3, or 5! Please enter a valid number.')		
+// 	}
+// }
+
 
 function checkCardFlip() {
   round.answers.find

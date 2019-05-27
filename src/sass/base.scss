@@ -241,6 +241,16 @@ main {
 #submit-form__submit-btn {
   @include dimension(40px, 10%);
   display: inline-block;
+  font-size: 16px;
+}
+
+#center-section__multiplier-form {
+  label {
+  background-color: white;
+  }
+  button {
+  width: 50px;
+  }
 }
 
 /*--------------- highlight current player -------------*/
