@@ -29,8 +29,9 @@ class FastMoney extends Round {
   }
 	
   multiplyScore(round, game) {
-    let score1 = round.evaluateScore([... new Set(this.player1Guesses)])
-    let score2 = round.evaluateScore([... new Set(this.player2Guesses)])
+		debugger;
+    let score1 = round.evaluateScore([... new Set(this.player2Guesses)])
+    let score2 = round.evaluateScore([... new Set(this.player1Guesses)])
     game.player1.score += (game.player1.multiplier * score1)
     game.player2.score += (game.player2.multiplier * score2)
   }
