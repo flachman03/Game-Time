@@ -94,6 +94,11 @@ const DomUpdates = {
   displayTimer(turn) {
     $('#timer').text(turn.second)
     $('#timer-2').text(turn.second)
+  },
+
+  resetScoreBox() {
+    $('#score-box__player-1-score').text('0')
+    $('#score-box__player-2-score').text('0')
   }
 }
 
