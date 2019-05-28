@@ -6,8 +6,6 @@ import '../src/sass/base.scss'
 import DomUpdates from './DomUpdates'
 
 import Game from '../src/Game.js';
-import SurveyRepo from './SurveyRepo';
-import Round from './Round'
 
 let game, round, survey, turn;
 
